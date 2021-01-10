@@ -29,7 +29,17 @@ const Home = () => {
             </ul>
           </div>
         </section>
-        <section></section>
+        <section>
+          <h2>김보미의 현 상황</h2>
+          <ul>
+            <li>
+              <p>알아가야 하는 것 들</p>
+              <ul>
+                <li>웹사이트 성능 최적화</li>
+              </ul>
+            </li>
+          </ul>
+        </section>
       </main>
     </ContentsWrap>
   );
