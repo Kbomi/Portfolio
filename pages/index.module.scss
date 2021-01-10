@@ -24,3 +24,25 @@
   height: 240px;
   margin-top: -100px;
 }
+
+.desc {
+  margin-top: 40px;
+  @include font();
+
+  ul {
+    margin: 15px 0 0;
+    padding: 0;
+    list-style: none;
+  }
+  li {
+    position: relative;
+    padding-left: 20px;
+
+    &::before {
+      content: "-";
+      position: absolute;
+      top: 0;
+      left: 5px;
+    }
+  }
+}
