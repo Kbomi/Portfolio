@@ -7,12 +7,14 @@ const Home = () => {
     <ContentsWrap>
       <main>
         <div className={styles.banner} />
-        <section className="content-width">
+        <section
+          className={`content-width ${styles.section} ${styles.sectionBanner}`}
+        >
           <div className={styles.me}>
             <div className={styles.meImage}>
               <Image src="/profile_img.jpeg" alt="보미사진" layout="fill" />
             </div>
-            <p>UI 개발자</p>
+            <h2>UI 개발자</h2>
           </div>
           <div className={styles.desc}>
             <p>안녕하세요. UI개발자 김보미입니다.</p>
@@ -29,15 +31,79 @@ const Home = () => {
             </ul>
           </div>
         </section>
-        <section>
-          <h2>김보미의 현 상황</h2>
-          <ul>
+        <div className={styles.colorSection}>
+          <section className={`content-width ${styles.section}`}>
+            <h3>김보미의 현 상황</h3>
+            <ul className={styles.cardList}>
+              <li className={styles.card}>
+                <div>
+                  <p className={`${styles.cardTitle} ${styles.todo}`}>
+                    알아가야 하는 것 들
+                  </p>
+                  <ul>
+                    <li>웹사이트 성능 최적화</li>
+                  </ul>
+                </div>
+              </li>
+              <li className={styles.card}>
+                <div>
+                  <p className={`${styles.cardTitle} ${styles.doing}`}>
+                    알고있지만 더 배워야 하는 것 들
+                  </p>
+                  <ul>
+                    <li>JavaScript</li>
+                    <li>React.js, Next.js</li>
+                    <li>Css in JS</li>
+                    <li>UI/UX</li>
+                  </ul>
+                </div>
+              </li>
+              <li className={styles.card}>
+                <div>
+                  <p className={`${styles.cardTitle} ${styles.done}`}>
+                    알고있는 것 들
+                  </p>
+                  <ul>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li>SASS</li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </section>
+        </div>
+        <section className={`content-width ${styles.section}`}>
+          <h3>김보미의 앞으로 방향</h3>
+          <ol className={styles.olList}>
             <li>
-              <p>알아가야 하는 것 들</p>
-              <ul>
-                <li>웹사이트 성능 최적화</li>
-              </ul>
+              <p>UI, UX 디자인을 잘아는 UI개발자</p>
+              <p>
+                디자이너가 전달해주는 그대로 화면을 구현하는 수동적인 사람이
+                되고 싶지 않습니다.
+                <br />
+                UI, UX에 대한 이해가 있어서 디자이너와 같이 의논하며 진행하는
+                적극적인 개발자가 될 것 입니다.
+              </p>
             </li>
+            <li>
+              <p>최신기술에 대한 거부감이 없는 UI개발자</p>
+              <p>
+                매일 똑같은 코드사용, 복붙 코드가 아닌
+                <br />
+                새로운 기술이 나왔을 때 그것을 응용할 방법을 고민하는 개발자가
+                될 것 입니다.
+                <br />
+                ex.) styled components의 활용, React의 hook, Next.js의
+                next/image 등..
+              </p>
+            </li>
+          </ol>
+        </section>
+        <section className={`content-width ${styles.section}`}>
+          <h3>기술외의 능력</h3>
+          <ul>
+            <li>소통능력</li>
           </ul>
         </section>
       </main>
