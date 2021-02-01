@@ -4,7 +4,9 @@ import styles from "./index.module.scss";
 const Header = () => {
   return (
     <header className={styles.header}>
-      <h1 className="point">Bomi</h1>
+      <Link href="/">
+        <a className="point">Bomi</a>
+      </Link>
       <nav id="gnbMenuWrap">
         <ul className={styles.nav_list}>
           <li>

@@ -47,6 +47,7 @@ ul {
 }
 
 .content-width {
+  width: 100%;
   max-width: 1600px;
   margin: 0 auto;
 
@@ -60,6 +61,10 @@ ul {
   @include mobile {
     padding: 0 20px;
   }
+}
+
+.contents-wrap {
+  margin-top: 64px;
 }
 
 .point {
