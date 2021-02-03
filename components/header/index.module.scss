@@ -1,0 +1,43 @@
+@import "../../styles/mixin";
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 20px 20px;
+  z-index: 99;
+
+  a {
+    margin: 0;
+    padding: 0;
+  }
+}
+
+.nav_list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  a {
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 0px;
+      height: 2px;
+      background: $brown;
+      transition: width 0.5s ease-in-out;
+    }
+
+    &:hover::before {
+      width: 100%;
+    }
+  }
+}
