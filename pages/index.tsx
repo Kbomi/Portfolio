@@ -1,8 +1,7 @@
 import Image from "next/image";
 import ContentsWrap from "../components/contentsWrap";
 import styles from "./index.module.scss";
-import Typist from "react-typist";
-import { useEffect, useState } from "react";
+
 
 const Home = () => {
   return (
