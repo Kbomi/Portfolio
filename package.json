@@ -1,11 +1,13 @@
 {
-  "name": "test-app",
+  "name": "bm-kim",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "export": "next export",
+    "deploy": "npm run build && npm run export"
   },
   "dependencies": {
     "netlify-plugin-next-dynamic": "^1.0.9",
