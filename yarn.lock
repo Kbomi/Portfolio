@@ -2442,6 +2442,11 @@ neo-async@^2.5.0, neo-async@^2.6.1, neo-async@^2.6.2:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.2.tgz#b4aafb93e3aeb2d8174ca53cf163ab7d7308305f"
   integrity sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==
 
+netlify-plugin-next-dynamic@^1.0.9:
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/netlify-plugin-next-dynamic/-/netlify-plugin-next-dynamic-1.0.9.tgz#868d283af32898cf9279ae19609b1d6b9feb9a8b"
+  integrity sha512-qNPiU+POrDOEvTo1ZZDuaDm+/Su3LznszzbjpUiDmfCutyN16OCpzPh69X2XEWcPh1JLo5BdUHHFz7q2c5L5IA==
+
 next-tick@~1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/next-tick/-/next-tick-1.0.0.tgz#ca86d1fe8828169b0120208e3dc8424b9db8342c"
