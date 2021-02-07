@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "export": "next export"
+    "export": "next export",
+    "postbuild": "next-on-netlify"
   },
   "dependencies": {
     "netlify-plugin-next-dynamic": "^1.0.9",
