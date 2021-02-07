@@ -3,16 +3,15 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next",
     "build": "next build",
     "start": "next start",
-    "export": "next export",
-    "postbuild": "next-on-netlify",
-    "netlify-deploy": "next build && next export"
+    "postbuild": "next-on-netlify"
   },
   "dependencies": {
     "netlify-plugin-next-dynamic": "^1.0.9",
     "next": "10.0.5",
+    "next-on-netlify": "^2.8.7",
     "react": "17.0.1",
     "react-dom": "17.0.1",
     "sass": "^1.32.2"
