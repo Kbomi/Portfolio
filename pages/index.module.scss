@@ -123,12 +123,41 @@
   }
 }
 
+.section {
+  padding: 80px 0 120px;
+}
+
 .colorSection {
   background: $yellow;
 }
 
-.section {
-  padding: 80px 0 120px;
+.career {
+  border-top: 10px solid $yellow;
+
+  ul {
+    margin-top: 40px;
+  }
+  li {
+    display: flex;
+  }
+}
+
+.careerDate {
+  min-width: 30%;
+  margin-right: 40px;
+  padding-right: 20px;
+  background-color: $orange;
+  @include font($size: 1.5rem, $weight: bold, $lineHeight: 3, $letterSpacing:-2px, $color: $white);
+  text-align: right;
+}
+
+.careerDesc {
+  max-width: calc(70% - 40px);
+  padding: 10px 0;
+
+  p {
+    @include font($lineHeight: 3);
+  }
 }
 
 .cardList {
