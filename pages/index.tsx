@@ -24,7 +24,7 @@ const Home = () => {
                 </li>
                 <li>JavaScript로 동적화면을 구현할 수 있습니다.</li>
                 <li>
-                  또한, api호출하여 데이터 가공 및 CRUD 화면을 구현 할 수
+                  또한, api호출하여 데이터 가공 및 CRUD 화면을 구현 할 수
                   있습니다.
                 </li>
               </ul>
@@ -34,9 +34,35 @@ const Home = () => {
             <Image src="/profile_img.jpeg" alt="보미사진" layout="fill" />
           </div>
         </section>
-        <section className={`${styles.colorSection} ${styles.section}`}>
+        <section className={`${styles.career} ${styles.section}`}>
           <div className="content-width">
             <h2>경력</h2>
+            <ul>
+            <li>
+                <p className={styles.careerDate}>2020.01 ~ 재직중</p>
+                <div className={styles.careerDesc}>
+                  <p>회사명: 두손컴퍼니</p>
+                  <p>부서/직급: 개발1팀/사원</p>
+                  <p>담당업무: 퍼블리싱 및 프론트개발</p>
+                </div>
+              </li>
+              <li>
+                <p className={styles.careerDate}>2018.09 ~ 2019.12</p>
+                <div className={styles.careerDesc}>
+                  <p>회사명: 김지민앤컴퍼니</p>
+                  <p>부서/직급: 웹팀/사원</p>
+                  <p>담당업무: 퍼블리싱</p>
+                </div>
+              </li>
+              <li>
+                <p className={styles.careerDate}>2014.04 ~ 2017.04</p>
+                <div className={styles.careerDesc}>
+                  <p>회사명: 삼진글로벌넷</p>
+                  <p>부서/직급: 자재팀/사원</p>
+                  <p>담당업무: 수출 시 필요한 영양정보 양식제작 및 월 마감 전표 작성.</p>
+                </div>
+              </li>
+            </ul>
           </div>
         </section>
         <div className={styles.colorSection}>
