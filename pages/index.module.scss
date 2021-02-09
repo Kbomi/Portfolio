@@ -3,91 +3,23 @@
 .banner {
   position: relative;
   display: flex;
-  height: calc(100vh - 64px);
-  padding: 100px 100px 100px 0;
-
-  &::before {
-    content: "";
-    position: absolute;
-    bottom: 0;
-    right: calc(100px + ((70vh - 200px)) / 2);
-    width: 10px;
-    height: 50%;
-    background-color: $yellow;
-  }
-
-  &::after {
-    content: "";
-    position: absolute;
-    top: calc(100px + 3vw);
-    right: 0;
-    width: calc(100px + ((70vh - 200px)) / 2);
-    height: 10px;
-    background-color: $yellow;
-    z-index: -1;
-  }
+  align-items: center;
+  height: 800px;
+  background: url('/public/top_banner.jpeg') no-repeat center;
 }
 
 .bannerText {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  width: calc(100vw - (70vh - 200px));
-  max-height: calc(100% - 600px);
-  margin-top: 300px;
-  background-color: $yellow;
+  h1 {
+    margin: 0;
+    @include font($size: 2.813rem, $weight: bold);
+    text-align: center;
+  }
 
   span {
     display: block;
     text-align: center;
     font-size: 1rem;
   }
-}
-
-.belt {
-  position: relative;
-  width: 100%;
-  margin: 40px 0;
-  background-color: $white;
-  overflow: hidden;
-
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    display: block;
-    width: 0%;
-    height: 100%;
-    background-color: $yellow;
-    animation-duration: 2s;
-    animation-name: belt;
-  }
-
-  h1 {
-    margin: 0;
-    @include font($size: 2.813rem, $weight: bold, $color: $brown);
-    text-align: center;
-    transition: color 1s;
-  }
-}
-
-@keyframes belt {
-  from {
-    width: 100%;
-  }
-
-  to {
-    width: 0%;
-  }
-}
-
-.meImage {
-  margin-left: auto;
-  position: relative;
-  width: calc(70vh - 200px);
-  height: 100%;
 }
 
 .desc {

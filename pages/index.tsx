@@ -10,9 +10,7 @@ const Home = () => {
         <section className={styles.banner}>
           <div className={styles.bannerText}>
             <span>안녕하세요.</span>
-            <div className={styles.belt}>
-              <h1>UI개발자 김보미입니다.</h1>
-            </div>
+            <h1>UI개발자 김보미입니다.</h1>
             <div className={styles.desc}>
               <p>
                 UI/UX에 대한 관심이 높고, 최신 기술 트렌드에 관심이 많습니다.
@@ -29,9 +27,6 @@ const Home = () => {
                 </li>
               </ul>
             </div>
-          </div>
-          <div className={styles.meImage}>
-            <Image src="/profile_img.jpeg" alt="보미사진" layout="fill" />
           </div>
         </section>
         <section className={`${styles.career} ${styles.section}`}>
