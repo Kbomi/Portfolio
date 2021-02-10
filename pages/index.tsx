@@ -6,8 +6,24 @@ import styles from "./index.module.scss";
 const Home = () => {
   return (
     <ContentsWrap>
-      <main>
-        <section className={styles.banner}>
+      <main className={styles.main}>
+        <section className={`content-width ${styles.banner}`}>
+          <h1>
+            <p><span>UI</span><br/><span>Developer</span></p>
+            <p>김보미 입니다. 
+              {/* &#x1F64C; */}
+            </p>
+          </h1>
+          <div className={styles.bannerImage}>
+            <div>
+              <Image src='/bomi_img1.jpeg' alt='김보미 사진' layout='fill' />
+            </div>
+          </div>
+        </section>
+        <section className={styles.info}>
+
+        </section>
+        {/* <section className={styles.banner}>
           <div className={styles.bannerText}>
             <span>안녕하세요.</span>
             <h1>UI개발자 김보미입니다.</h1>
@@ -28,8 +44,8 @@ const Home = () => {
               </ul>
             </div>
           </div>
-        </section>
-        <section className={`${styles.career} ${styles.section}`}>
+        </section> */}
+        {/* <section className={`${styles.career} ${styles.section}`}>
           <div className="content-width">
             <h2>경력</h2>
             <ul>
@@ -134,7 +150,7 @@ const Home = () => {
           <ul>
             <li>소통능력</li>
           </ul>
-        </section>
+        </section> */}
       </main>
     </ContentsWrap>
   );
