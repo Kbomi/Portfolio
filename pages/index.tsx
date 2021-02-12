@@ -2,34 +2,26 @@ import Image from "next/image";
 import ContentsWrap from "../components/contentsWrap";
 import styles from "./index.module.scss";
 
-
 const Home = () => {
   return (
     <ContentsWrap>
       <main className={styles.main}>
         <section className={`content-width ${styles.banner}`}>
-          <h1>
-            <p><span>UI</span><br/><span>Developer</span></p>
-            <p>김보미 입니다. 
-              {/* &#x1F64C; */}
-            </p>
-          </h1>
-          <div className={styles.bannerImage}>
-            <div>
-              <Image src='/bomi_img1.jpeg' alt='김보미 사진' layout='fill' />
-            </div>
-          </div>
-        </section>
-        <section className={styles.info}>
-
-        </section>
-        {/* <section className={styles.banner}>
-          <div className={styles.bannerText}>
-            <span>안녕하세요.</span>
-            <h1>UI개발자 김보미입니다.</h1>
+          <div className={styles.banenrText}>
+            <h1>
+              <p>
+                <span>UI</span>
+                <br />
+                <span>Developer</span>
+              </p>
+              <p>
+                김보미 입니다.
+                {/* &#x1F64C; */}
+              </p>
+            </h1>
             <div className={styles.desc}>
               <p>
-                UI/UX에 대한 관심이 높고, 최신 기술 트렌드에 관심이 많습니다.
+                UI/UX에 대한 관심이 높고, JavaScript 트렌드에 관심이 많습니다.
               </p>
               <ul>
                 <li>
@@ -44,39 +36,57 @@ const Home = () => {
               </ul>
             </div>
           </div>
-        </section> */}
-        {/* <section className={`${styles.career} ${styles.section}`}>
-          <div className="content-width">
-            <h2>경력</h2>
-            <ul>
-            <li>
-                <p className={styles.careerDate}>2020.01 ~ 재직중</p>
-                <div className={styles.careerDesc}>
-                  <p>회사명: 두손컴퍼니</p>
-                  <p>부서/직급: 개발1팀/사원</p>
-                  <p>담당업무: 퍼블리싱 및 프론트개발</p>
-                </div>
-              </li>
-              <li>
-                <p className={styles.careerDate}>2018.09 ~ 2019.12</p>
-                <div className={styles.careerDesc}>
-                  <p>회사명: 김지민앤컴퍼니</p>
-                  <p>부서/직급: 웹팀/사원</p>
-                  <p>담당업무: 퍼블리싱</p>
-                </div>
-              </li>
-              <li>
-                <p className={styles.careerDate}>2014.04 ~ 2017.04</p>
-                <div className={styles.careerDesc}>
-                  <p>회사명: 삼진글로벌넷</p>
-                  <p>부서/직급: 자재팀/사원</p>
-                  <p>담당업무: 수출 시 필요한 영양정보 양식제작 및 월 마감 전표 작성.</p>
-                </div>
-              </li>
-            </ul>
+          <div className={styles.bannerImage}>
+            <div>
+              <Image src="/bomi_img1.jpeg" alt="김보미 사진" layout="fill" />
+            </div>
           </div>
         </section>
-        <div className={styles.colorSection}>
+        <section className={`${styles.section} ${styles.career}`}>
+          <div className="content-width">
+            <div className={styles.careerContent}>
+              <div className={styles.careerImage}>
+                <Image src="/career_img.jpeg" alt="김보미 사진" layout="fill" />
+              </div>
+              <div className={styles.careerText}>
+                <h2>경력</h2>
+                <ul>
+                  <li>
+                    <p className={styles.careerDate}>2020.01 ~ 재직중</p>
+                    <div className={styles.careerDesc}>
+                      <p>회사명: 두손컴퍼니</p>
+                      <p>부서/직급: 개발1팀/사원</p>
+                      <p>담당업무: 퍼블리싱 및 프론트개발</p>
+                    </div>
+                  </li>
+                  <li>
+                    <p className={styles.careerDate}>2018.09 ~ 2019.12</p>
+                    <div className={styles.careerDesc}>
+                      <p>회사명: 김지민앤컴퍼니</p>
+                      <p>부서/직급: 웹팀/사원</p>
+                      <p>담당업무: 퍼블리싱</p>
+                    </div>
+                  </li>
+                  <li>
+                    <p className={styles.careerDate}>2014.04 ~ 2017.04</p>
+                    <div className={styles.careerDesc}>
+                      <p>회사명: 삼진글로벌넷</p>
+                      <p>부서/직급: 자재팀/사원</p>
+                      <p>
+                        담당업무: 수출 시 필요한 영양정보 양식제작 및 월 마감
+                        전표 작성.
+                      </p>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+        {/* todo list */}
+        {/* 경력기술서, 자신있는 포트폴리오 */}
+
+        {/* <div className={styles.colorSection}>
           <section className={`content-width ${styles.section}`}>
             <h3>김보미의 현 상황</h3>
             <ul className={styles.cardList}>
