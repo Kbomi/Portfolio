@@ -9,31 +9,36 @@
     position: absolute;
     top: 0;
     right: 0;
-    width: 300px;
-    height: 300px;
+    width: calc(50vw - 600px);
+    height: calc(50vw - 600px);
     background: $green;
   }
 }
 
 .banner {
   position: relative;
-  height: 600px;
+  height: 750px;
+  margin-top: 100px;
+}
+
+.banenrText {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  animation: moveRight 0.8s alternate ease-out;
 
   h1 {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    transform: translateY(-50%);
+    margin: 0 0 40px;
     @include font($size: 2rem, $weight: bold);
-    animation: moveRight .8s alternate ease-out;
   }
-  
+
   span {
     position: relative;
     line-height: 1;
 
     &::after {
-      content: '';
+      content: "";
       position: absolute;
       bottom: 5px;
       left: 0;
@@ -41,7 +46,7 @@
       width: 100%;
       height: 10px;
       background: $green;
-      opacity: .6;
+      opacity: 0.6;
       z-index: -1;
       animation: lineWidth 1.5s alternate ease-in-out;
     }
@@ -52,55 +57,38 @@
   position: absolute;
   top: 0;
   right: 0;
-  animation: moveLeft .8s alternate ease-out;
+  height: 100%;
+  animation: moveLeft 0.8s alternate ease-out;
 
   & > div {
     position: relative;
-    width: 600px;
-    height: 600px;
+    width: 750px;
+    height: 100%;
   }
 }
 
-// .banner {
-//   position: relative;
-//   display: flex;
-//   align-items: center;
-//   height: 800px;
-//   background: url('/top_banner.jpeg') no-repeat center;
-// }
+.desc {
+  @include font($size: 1rem);
 
-// .bannerText {
-//   h1 {
-//     margin: 0;
-//     @include font($size: 2.813rem, $weight: bold);
-//     text-align: center;
-//   }
+  & > p {
+    @include font($size: 1.25rem, $weight: bold, $color: $dark-green);
+  }
 
-//   span {
-//     display: block;
-//     text-align: center;
-//     font-size: 1rem;
-//   }
-// }
+  ul {
+    margin: 15px 0 0;
+  }
+  li {
+    position: relative;
+    padding-left: 20px;
 
-// .desc {
-//   @include font($size: 1.25rem);
-
-//   ul {
-//     margin: 15px 0 0;
-//   }
-//   li {
-//     position: relative;
-//     padding-left: 20px;
-
-//     &::before {
-//       content: "-";
-//       position: absolute;
-//       top: 0;
-//       left: 5px;
-//     }
-//   }
-// }
+    &::before {
+      content: "-";
+      position: absolute;
+      top: 0;
+      left: 5px;
+    }
+  }
+}
 
 .section {
   padding-top: 40px;
@@ -120,134 +108,196 @@
   padding: 80px 0 120px;
 }
 
-.colorSection {
-  background: $yellow;
+.career {
+  padding-bottom: 0;
+  background-color: #070e0d;
+  border-top: 14px solid $dark-green;
 }
 
-.career {
-  border-top: 10px solid $yellow;
+.careerContent {
+  display: flex;
+  justify-content: space-between;
+}
+
+.careerImage {
+  position: relative;
+  width: 750px;
+  height: 750px;
+}
+
+.careerText {
+  & > * {
+    color: $white;
+  }
+
+  h2 {
+    margin-left: 0;
+    color: $white;
+  }
 
   ul {
-    margin-top: 40px;
+    margin-top: 60px;
   }
+
   li {
     display: flex;
+
+    & + li {
+      margin-top: 30px;
+    }
   }
 }
 
 .careerDate {
-  min-width: 30%;
-  margin-right: 40px;
-  padding-right: 20px;
-  background-color: $orange;
-  @include font($size: 1.5rem, $weight: bold, $lineHeight: 3, $letterSpacing:-2px, $color: $white);
-  text-align: right;
+  width: 250px;
+  @include font(
+    $size: 1.25rem,
+    $weight: bold,
+    $lineHeight: 1,
+    $letterSpacing: -2px,
+    $color: $white
+  );
 }
 
 .careerDesc {
-  max-width: calc(70% - 40px);
-  padding: 10px 0;
+  width: 450px;
 
-  p {
-    @include font($lineHeight: 3);
-  }
-}
-
-.cardList {
-  display: flex;
-  margin: 20px -10px 0;
-}
-
-.cardTitle {
-  display: inline-block;
-  padding: 2px 10px;
-  border-radius: 3px;
-  @include font($size: 1rem, $weight: bold, $color: $white);
-}
-
-.todo {
-  background: $orange;
-}
-
-.doing {
-  background: $brown;
-}
-
-.done {
-  background: $dark-gray;
-}
-
-.card {
-  width: calc(100% / 3);
-  max-width: 480px;
-  padding: 0 10px;
-
-  & > div {
-    height: 100%;
-    padding: 15px 15px 30px;
-    background: $white;
-    box-shadow: 2px 3px 8px $light-gray;
-  }
-
-  ul {
+  p + p {
     margin-top: 10px;
-    padding-top: 10px;
-    border-top: 1px solid $light-gray;
-  }
-  li {
-    position: relative;
-    padding-left: 20px;
-    @include font($size: 0.875rem);
-
-    &::before {
-      content: "-";
-      position: absolute;
-      top: 0;
-      left: 5px;
-    }
   }
 }
 
-.olList {
-  padding-inline-start: 20px;
+// .cardList {
+//   display: flex;
+//   margin: 20px -10px 0;
+// }
 
-  li {
-    &::marker {
-      font-weight: bold;
-    }
-    & + li {
-      margin-top: 20px;
-    }
-  }
+// .cardTitle {
+//   display: inline-block;
+//   padding: 2px 10px;
+//   border-radius: 3px;
+//   @include font($size: 1rem, $weight: bold, $color: $white);
+// }
 
-  p {
-    @include font($size: 0.875rem);
+// .todo {
+//   background: $orange;
+// }
 
-    &:first-child {
-      margin-bottom: 5px;
-      @include font($size: 1rem, $weight: bold);
-    }
-  }
-}
+// .doing {
+//   background: $brown;
+// }
 
-// keyframe 
-@keyframes moveRight {
-  0% { left: -30px; opacity: 0; }
-  30% { left: -20px; opacity: .4; }
-  60% { left: -10px; opacity: .8; }
-  100% { left: 0; opacity: 1; }
-}
+// .done {
+//   background: $dark-gray;
+// }
 
-@keyframes moveLeft {
-  0% { right: -30px; opacity: 0; }
-  30% { right: -20px; opacity: .4; }
-  60% { right: -10px; opacity: .8; }
-  100% { right: 0; opacity: 1; }
-}
+// .card {
+//   width: calc(100% / 3);
+//   max-width: 480px;
+//   padding: 0 10px;
 
-@keyframes lineWidth {
-  0% { width: 0; opacity: 0; }
-  30% { width: 30%; opacity: .4; }
-  60% { width: 70%; opacity: .8; }
-  100% { width: 100%; opacity: 1; }
-}
+//   & > div {
+//     height: 100%;
+//     padding: 15px 15px 30px;
+//     background: $white;
+//     box-shadow: 2px 3px 8px $light-gray;
+//   }
+
+//   ul {
+//     margin-top: 10px;
+//     padding-top: 10px;
+//     border-top: 1px solid $light-gray;
+//   }
+//   li {
+//     position: relative;
+//     padding-left: 20px;
+//     @include font($size: 0.875rem);
+
+//     &::before {
+//       content: "-";
+//       position: absolute;
+//       top: 0;
+//       left: 5px;
+//     }
+//   }
+// }
+
+// .olList {
+//   padding-inline-start: 20px;
+
+//   li {
+//     &::marker {
+//       font-weight: bold;
+//     }
+//     & + li {
+//       margin-top: 20px;
+//     }
+//   }
+
+//   p {
+//     @include font($size: 0.875rem);
+
+//     &:first-child {
+//       margin-bottom: 5px;
+//       @include font($size: 1rem, $weight: bold);
+//     }
+//   }
+// }
+
+// // keyframe
+// @keyframes moveRight {
+//   0% {
+//     left: -30px;
+//     opacity: 0;
+//   }
+//   30% {
+//     left: -20px;
+//     opacity: 0.4;
+//   }
+//   60% {
+//     left: -10px;
+//     opacity: 0.8;
+//   }
+//   100% {
+//     left: 0;
+//     opacity: 1;
+//   }
+// }
+
+// @keyframes moveLeft {
+//   0% {
+//     right: -30px;
+//     opacity: 0;
+//   }
+//   30% {
+//     right: -20px;
+//     opacity: 0.4;
+//   }
+//   60% {
+//     right: -10px;
+//     opacity: 0.8;
+//   }
+//   100% {
+//     right: 0;
+//     opacity: 1;
+//   }
+// }
+
+// @keyframes lineWidth {
+//   0% {
+//     width: 0;
+//     opacity: 0;
+//   }
+//   30% {
+//     width: 30%;
+//     opacity: 0.4;
+//   }
+//   60% {
+//     width: 70%;
+//     opacity: 0.8;
+//   }
+//   100% {
+//     width: 100%;
+//     opacity: 1;
+//   }
+// }
