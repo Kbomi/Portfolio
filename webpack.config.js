@@ -22,12 +22,17 @@ module.exports = {
         test: /\.vue$/,
         loader: "vue-loader",
       },
+      {
+        test: /\.css$/,
+        use: ["vue-style-loader", "css-loader"],
+      },
     ],
   },
   plugins: [new VueLoaderPlugin()],
   output: {
     filename: "[name].js",
     path: path.join(__dirname, "dist"),
+    publicPath: "/dist",
     // path는 폴더 경로 dist폴더 안 app.js가 생긴다.
   },
 };
