@@ -34,6 +34,7 @@ module.exports = {
     path: path.join(__dirname, "dist"),
     publicPath: "/dist",
     // path는 폴더 경로 dist폴더 안 app.js가 생긴다.
+    // webpack-dev-server를 사용할 경우 실제로 dist폴더가 생기지 않고 메모리에 생성된다.
   },
 };
 // webpack은 여러개의 script를 하나로 통합
