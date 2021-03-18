@@ -3,5 +3,6 @@ import Index from "./index";
 import NumberBaseball from "./NumberBaseball";
 import ResponseCheck from "./ResponseCheck";
 import RockScissorsPaper from "./RockScissorsPaper";
+import LottoGenerator from "./LottoGenerator";
 
-new Vue(RockScissorsPaper).$mount("#root");
+new Vue(LottoGenerator).$mount("#root");
