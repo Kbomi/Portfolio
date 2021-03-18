@@ -2,14 +2,11 @@
   <div>
     <div id="screen" :class="state" @click="onClickScreen">{{ message }}</div>
     <!-- v-bind:class = :class -->
-    <div>
-      <div>
-        평균 시간 :
-        {{ result.reduce((a, c) => a + c, 0) / result.length || 0 }}ms
-      </div>
+    <template v-show="result.length">
+      <div>평균 시간 : {{ average }}ms</div>
       <button @click="onReset">리셋</button>
       <!-- v-on = @ -->
-    </div>
+    </template>
   </div>
 </template>
 
@@ -25,6 +22,12 @@ export default {
       state: "waiting",
       message: "클릭해서 시작하세요.",
     };
+  },
+  computed: {
+    // 일반 데이터를 가공해서 쓸 때 사용: computed를 사용하면 값이 캐싱 됨.
+    average() {
+      return this.result.reduce((a, c) => a + c, 0) / this.result.length || 0;
+    },
   },
   methods: {
     onReset() {
