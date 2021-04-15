@@ -60,7 +60,14 @@ exports.cssLoaders = function (options) {
     postcss: generateLoaders(),
     less: generateLoaders('less'),
     sass: generateLoaders('sass', { indentedSyntax: true }),
-    scss: generateLoaders('sass'),
+    scss : generateLoaders('sass', { data: '@import \'~@/assets/scss/abstracts/abstracts\';' }),
+    // scss: generateLoaders('sass', {webpackImporter: false}).concat({
+    //   loader: 'sass-resources-loader',
+    //   options: {
+    //     resources: path.resolve( __dirname, '..', 'src/assets/scss/common.scss')
+    //   }
+    // }),    
+    // scss: generateLoaders('sass'),
     stylus: generateLoaders('stylus'),
     styl: generateLoaders('stylus')
   }

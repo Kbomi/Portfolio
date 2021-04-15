@@ -1,0 +1,168 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass mixins.
+// -----------------------------------------------------------------------------
+
+/// importing
+// grid
+@import './mixins/grid';
+// responsive
+@import './mixins/responsive-visibility';
+
+
+
+/// Event wrapper
+/// @author Harry Roberts
+/// @param {Bool} $self [false] - Whether or not to include current selector
+/// @link https://twitter.com/csswizardry/status/478938530342006784 Original tweet from Harry Roberts
+@mixin on-event($self: false) {
+  @if $self {
+    &,
+    &:hover,
+    &:active,
+    &:focus {
+      @content;
+    }
+  } @else {
+    &:hover,
+    &:active,
+    &:focus {
+      @content;
+    }
+  }
+}
+
+/// Make a context based selector a little more friendly
+/// @author Hugo Giraudel
+/// @param {String} $context
+@mixin when-inside($context) {
+  #{$context} & {
+    @content;
+  }
+}
+
+/// skip
+@mixin skip() {
+	overflow:hidden;
+	position:absolute;
+	top:-999em;
+	left:-999em;
+	width:1px;
+	height:1px;
+}
+
+/// clearfix
+@mixin clearfix() {
+  &:before,
+  &:after {
+		content: '';
+		display: block;
+		clear: both;
+	}
+}
+
+/// skip
+@mixin skip() {
+	overflow:hidden;
+	position:absolute;
+	top:-999em;
+	left:-999em;
+	width:1px;
+	height:1px;
+}
+
+/// ellipsis
+@mixin ellipsis($width:null) {
+	@if not $width{
+		display:block;
+	}@else{
+		display: inline-block;
+		max-width: $width;
+	}
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	word-wrap: normal;
+}
+
+@mixin webkit-multiLineEllipsis($lineHeight: 1.4em, $lineCount: 2, $extend: false){
+	display: -webkit-box;
+	@if $extend{
+		height: $lineCount * $lineHeight;
+	}
+	overflow: hidden;
+	line-height:$lineHeight;
+	text-overflow: ellipsis;
+	-webkit-line-clamp: $lineCount;
+	-webkit-box-orient: vertical;
+	white-space: normal;
+	word-wrap:break-word;
+}
+
+@mixin multiLineEllipsis($lineHeight: 1.2em, $lineCount: 1, $bgColor: $BACKGROUND_COLOR) {
+  position: relative;
+  height: $lineHeight * $lineCount;
+  overflow:hidden;
+  line-height: $lineHeight;
+
+	&:before {
+    content: '...';
+    position: absolute;
+    top: $lineHeight;
+    right: 0;
+    background-color: inherit;
+	}
+
+	&:after {
+    content: '';
+    display: inline;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: inherit;
+	}
+}
+
+/// shape
+@mixin triangle($color, $direction, $size: 6px, $round: false) {
+	width: 0;
+	height: 0;
+
+	@if $round {
+		border-radius: 3px;
+	}
+
+	@if $direction==down {
+		margin-top: 0 - round($size / 2.5);
+		border-left: $size solid transparent;
+		border-right: $size solid transparent;
+		border-top: $size solid $color;
+	}
+
+	@else if $direction==up {
+		margin-bottom: 0 - round($size / 2.5);
+		border-left: $size solid transparent;
+		border-right: $size solid transparent;
+		border-bottom: $size solid $color;
+	}
+
+	@else if $direction==right {
+		margin-right: $size * -1;
+		border-top: $size solid transparent;
+		border-bottom: $size solid transparent;
+		border-left: $size solid $color;
+	}
+
+	@else if $direction==left {
+		margin-left: $size * -1;
+		border-top: $size solid transparent;
+		border-bottom: $size solid transparent;
+		border-right: $size solid $color;
+	}
+}
+
+@mixin backgroundImage($image: '/', $repeat: no-repeat, $position: center, $size: cover) {
+	background-image: url($image);
+	background-repeat: $repeat;
+	background-position: $position;
+	background-size: $size;
+}

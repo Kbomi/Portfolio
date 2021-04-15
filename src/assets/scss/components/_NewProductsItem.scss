@@ -1,0 +1,213 @@
+@charset "UTF-8";
+
+.Mod_link-prod-new{
+  display:block;
+  > a,
+  > div{
+    display:block;
+    color:$TEXT_COLOR;
+  }
+  .thumb{
+    overflow:hidden;
+    position:relative;
+    padding-top:110%;
+    border-radius: 0;
+    .thumb-img{
+      position:absolute; 
+      top:0; 
+      left:0;
+      width: 100%;
+      padding-top:110%;
+      background-size: cover;
+      background-repeat:no-repeat;
+      background-position:50%;
+      transition: transform 0.25s ease-in-out;
+    }
+    &:hover{
+      .thumb-img{
+        transform: scale(1.05);
+      }
+    }
+    &:before{
+      content: '';
+      position: absolute;
+      top : 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      background: rgba(0,0,0,0.02);
+    }
+    .link{
+      display:block;
+      position:absolute;
+      left:0;
+      top:0;
+      width:100%;
+      height:100%;
+      opacity:0;
+    }
+    .idx{
+      position:absolute;
+      left:0;
+      top:0;
+      width: 26px;
+      height: 30px;
+      border-radius: 0;
+      font-size: 12px;
+      line-height: 26px;
+      font-weight: 500;
+      text-align:center;
+      color:$TEXT_COLOR-REVERSE;
+      background: url('#{$imgUrl}/ic-bg-flag@3x.png') no-repeat 0 0;
+      background-size: 100% 100%;
+      z-index: 10;
+    }
+    .soldout{
+      display:block;
+      position:absolute;
+      left:0;
+      top:0;
+      z-index:1;
+      width:100%;
+      height:100%;
+      margin:0;
+      background:rgba(0,0,0,0.5);
+      color:$TEXT_COLOR-REVERSE;
+      font-size:16px;
+      font-weight:bold;
+      text-align:center;
+      &:before{
+        content:'';
+        display:inline-block;
+        width:0;
+        height:100%;
+        vertical-align:middle;
+      }
+    }
+    .btn-favor{
+      position:absolute;
+      right:5px;
+      bottom:5px;
+      z-index:2;
+      width:24px;
+      height:21.6px;
+      margin:0;
+      background:transparent url('#{$imgUrl}/ic-web-favorit-heart-n.svg') no-repeat 50%;
+      background-size:100% 100%;
+      border:0;
+      overflow:hidden;
+      text-indent:-999px;
+      cursor:pointer;
+      &.active{
+        background-image:url('#{$imgUrl}/ic-web-favorit-heart-s.svg');
+      }
+    }
+  }
+  .wrap-info{
+    @include clearfix();
+    margin-top:10px;
+    padding:0 2px;
+  }
+  .info-delivery{
+    @include clearfix();
+  }
+  .seller{
+    @include ellipsis();
+    color:#808893;
+    font-size:12px;
+    font-style:normal;
+  }
+  .Icon_haru{
+    float:right;
+    width:54px;
+    height:12px;
+    margin-top:3px;
+  }
+  .prod-name{
+    @include ellipsis();
+    display:block;
+    clear:both;
+    font-size:13px;
+    font-style:normal;
+    color:#202429;
+  }
+  .info-price{
+    @include ellipsis();
+    margin-top: 4px;
+    letter-spacing:0.3px;
+    .dc,
+    .selling-price,
+    .sales{
+      margin-right:2px;
+    }
+    .dc{
+      color: $SECONDARY_COLOR-0;
+      font-size:15px;
+      font-weight:bold;
+    }
+    .selling-price{
+      font-size:15px;
+      font-weight:bold;
+      font-style:normal;
+      color:#202429;
+    }
+    .price{
+      display: none;
+    }
+  }
+  .sales{
+    display: none;
+  }
+}
+
+@media screen and (min-width: $screen-md-min) {
+  .Mod_link-prod-new{
+    .thumb{
+      border-radius:0;
+      .idx{
+        width: 32px;
+        height: 40px;
+        padding-top: 4px;
+        border-radius:0;
+        font-size: 14px;
+      }
+      .soldout{
+        font-size:26px;
+        font-weight:500;
+      }
+      .btn-favor{
+        right:7px;
+        bottom:7px;
+        width:34px;
+        height:30.6px;
+      }
+    }
+    .wrap-info{
+      margin-top: 12px;
+      padding:0;
+    }
+    .seller{
+      font-size:13px;
+    }
+    .Icon_haru{
+      width: 63px;
+      height:14px;
+      margin-top:2px;
+    }
+    .prod-name{
+      font-size:15px;
+    }
+    .info-price{
+      .dc{
+        font-size:18px;
+      }
+      .selling-price{
+        font-size:18px;
+      }
+      .price{
+        font-size:15px;
+      }
+    }
+  }
+}

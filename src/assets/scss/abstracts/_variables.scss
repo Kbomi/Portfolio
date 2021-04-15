@@ -1,0 +1,140 @@
+// -----------------------------------------------------------------------------
+// This file contains all application-wide Sass variables.
+// -----------------------------------------------------------------------------
+
+/// importing
+// color palette
+@import './variables/color';
+// grid
+@import './variables/grid';
+// typo
+@import './variables/typo';
+
+
+
+/// Container's maximum width
+/// @type Length
+// $max-width: 1180px !default;
+
+
+/// Breakpoints map
+/// @prop {String} keys - Keys are identifiers mapped to a given length
+/// @prop {Map} values - Values are actual breakpoints expressed in pixels
+// @import './variables/grid';
+
+
+/// Background color
+/// @type Color
+$BACKGROUND_COLOR: #ffffff !default;
+$DISABLED_COLOR: map-get($grey, '300') !default;
+@media (prefers-color-scheme: dark) {
+  //
+}
+
+/// Forground color
+/// @type Color
+$PRIMARY_COLOR: #1e1e1e !default;
+$SECONDARY_COLOR-0: #FF204B !default;
+$SECONDARY_COLOR-1: #1e88e5 !default;
+$SECONDARY_COLOR-2: #fb6089 !default;
+$SUCCESS_COLOR: #2EC88E !default;
+$DANGER_COLOR: $SECONDARY_COLOR-0 !default; // error, alert
+$WARNING_COLOR: map-get($amber, '700') !default;
+@media (prefers-color-scheme: dark) {
+  //
+}
+
+/// Copy text color
+/// @type Color
+$TEXT_COLOR: $PRIMARY_COLOR !default;
+$TEXT_COLOR-SUB: map-get($grey, '500') !default;
+$TEXT_COLOR-REVERSE: #fff !default;
+$LINK_COLOR: $TEXT_COLOR !default;
+@media (prefers-color-scheme: dark) {
+  //
+}
+
+
+/// Regular font family
+/// @type List
+$TEXT_FONT_STACK: (
+  'en': ('-apple-system', 'BlinkMacSystemFont', 'San Francisco', 'Noto Sans KR', 'Malgun Gothic', '맑은고딕', '돋움', 'Dotum', 'Helvetica', 'Apple SD Gothic Neo', Sans-serif),
+  'ko': ('Spoqa Han Sans', Sans-serif)
+);
+$TEXT_FONT_STACK-latest: (
+  'en': ('-apple-system', 'BlinkMacSystemFont', 'Noto Sans KR', 'San Francisco', 'Malgun Gothic', '맑은고딕', '돋움', 'Dotum', 'Helvetica', 'Apple SD Gothic Neo', Sans-serif),
+  'ko': ('Noto Sans KR', 'Spoqa Han Sans', Sans-serif)
+);
+
+/// Code (monospace) font family
+/// @type List
+$CODE_FONT_STACK: 'Courier New', 'DejaVu Sans Mono', 'Bitstream Vera Sans Mono', 'Monaco', monospace !default;
+
+
+// $DEFAULT_FONT:(
+//   'font-style':'normal',
+//   'font-weight':'normal',
+//   'font-size':14px,
+//   'line-height':1.4em,
+//   'font-family': map-get($FONT_FAMLY, 'en'),
+//   'letter-spacing':normal
+// );
+
+
+/// Cubic-bezier function
+$EASE_IN_QUAD: cubic-bezier(0.55, 0.085, 0.68, 0.53);
+$EASE_IN_CUBIC: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+$EASE_IN_QUART: cubic-bezier(0.895, 0.03, 0.685, 0.22);
+$EASE_IN_QUINT: cubic-bezier(0.755, 0.05, 0.855, 0.06);
+$EASE_IN_EXPO: cubic-bezier(0.95, 0.05, 0.795, 0.035);
+$EASE_IN_CIRC: cubic-bezier(0.6, 0.04, 0.98, 0.335);
+$EASE_OUT_QUAD: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+$EASE_OUT_CUBIC: cubic-bezier(0.215, 0.61, 0.355, 1);
+$EASE_OUT_QUART: cubic-bezier(0.165, 0.84, 0.44, 1);
+$EASE_OUT_QUINT: cubic-bezier(0.23, 1, 0.32, 1);
+$EASE_OUT_EXPO: cubic-bezier(0.19, 1, 0.22, 1);
+$EASE_OUT_CIRC: cubic-bezier(0.075, 0.82, 0.165, 1);
+$EASE_IN_OUT_QUAD: cubic-bezier(0.455, 0.03, 0.515, 0.955);
+$EASE_IN_OUT_CUBIC: cubic-bezier(0.645, 0.045, 0.355, 1);
+$EASE_IN_OUT_QUART: cubic-bezier(0.77, 0, 0.175, 1);
+$EASE_IN_OUT_QUINT: cubic-bezier(0.86, 0, 0.07, 1);
+$EASE_IN_OUT_EXPO: cubic-bezier(1, 0, 0, 1);
+$EASE_IN_OUT_CIRC: cubic-bezier(0.785, 0.135, 0.15, 0.86);
+
+
+// version
+$VER: '20.10.07';
+
+// 이미지 url
+$imgUrl: '/static/#{$VER}/images';
+
+// font url
+$fontUrl: '/static/#{$VER}/fonts';
+
+//
+// 이미지 url
+@media screen and (max-width: 768px) {
+  %font-weight-bold {
+    font-weight: 700;
+  }
+  %border-bottom-gray {
+    border-bottom: 1px solid #e1e1e1;
+  }
+  %border-top-gray {
+    border-top: 1px solid #e1e1e1;
+  }
+  %round-btn {
+    width: 72px;
+    height: 36px;
+    border-radius: 8px;
+    background: #000000;
+    border: none;
+    color: #ffffff;
+    font-size: 10px;
+    vertical-align: bottom;
+  }
+  %round-border {
+    border-radius: 8px;
+    border: 1px solid #bdbdbd;
+  }
+}

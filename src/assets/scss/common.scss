@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+// Vendors
+@import
+  '~@/assets/scss/vendors/swiper',
+  '~@/assets/scss/vendors/lightslider',
+  '~@/assets/scss/vendors/jquery.fancybox',
+  '~@/assets/scss/vendors/jquery-ui.1.12.1';
+
+// Base stuff
+@import
+  '~@/assets/scss/base/base',
+  '~@/assets/scss/base/fonts',
+  '~@/assets/scss/base/typography',
+  '~@/assets/scss/base/helpers';
+
+// Layout-related sections
+@import
+  '~@/assets/scss/layout/layout';
+//   '~@/assets/scss/layout/header',
+//   '~@/assets/scss/layout/footer';
+
+// Components
+// @import
+//   'components/button';
+
+// Page-specific styles
+// @import
+//   'pages/intro';
+
+// Themes
+// @import
+//   'themes/default';

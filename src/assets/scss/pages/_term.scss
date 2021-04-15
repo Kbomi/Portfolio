@@ -1,0 +1,61 @@
+@charset "UTF-8";
+
+/** 서비스 이용약관, 개인정보 취급방침 **/
+.term {
+  pre {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 14px;
+    line-height: 26px;
+    color: #202429;
+    white-space: pre-line;
+    &:first-of-type {
+      margin-top: 0;
+    }
+  }
+  .tbl-term {
+    max-width: 100%;
+    // table-layout: fixed;
+    th, td {
+      padding: 5px;
+      font-size: 14px;
+      border: 1px solid #000;
+      word-break: break-all;
+    }
+    thead {
+      th {
+        background: #e1e1e1;
+      }
+    }
+    tbody {
+      th {
+        font-weight: normal;
+        text-align: left;
+        background: #fff;
+      }
+      td {
+        vertical-align: middle;
+        a {
+          color: $SECONDARY_COLOR-1;
+          text-decoration: underline;
+        }
+        ul {
+          li {
+            letter-spacing: -1px;
+            margin-left: 25px;
+            list-style-position: outside;
+            list-style-type: disc;
+          }
+        }
+      }
+    }
+  }
+  .hidden_txt{
+    overflow:hidden;
+    position:absolute;
+    top:0;
+    left:-9999px;
+    width:1px;
+    height:1px;
+    text-indent:-9999px;
+  }
+}

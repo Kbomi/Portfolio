@@ -1,0 +1,126 @@
+@charset "UTF-8";
+
+.Mod_store-item{
+  position:relative;
+  padding-right:60px;
+
+  .link-store{
+    @include clearfix();
+    display:block;
+    padding:10px 0;
+  }
+  .idx{
+    float:left;
+    min-width:30px;
+    height:50px;
+    color:#9e9e9e;
+    font-size:14px;
+    line-height:50px;
+    text-align:center;
+  }
+  .thumb{
+    float:left;
+    width:50px;
+    height:50px;
+    margin-left:5px;
+    margin-right:15px;
+    border-radius:50%;
+    background-repeat:no-repeat;
+    background-position:50%;
+    background-size:cover;
+  }
+  .infos{
+    overflow:hidden;
+    &:before{
+      content:'';
+      display:inline-block;
+      width:0;
+      height:50px;
+      vertical-align:middle;
+    }
+
+    > div{
+      display:inline-block;
+      width:100%;
+      vertical-align:middle;
+    }
+  }
+  .name{
+    @include ellipsis();
+    display:block;
+    color:#333;
+    font-size:13px;
+    font-style:normal;
+  }
+  .tags{
+    @include ellipsis();
+    display:block;
+  }
+  .tag{
+    margin-right:5px;
+    color:#9e9e9e;
+    font-size:11px;
+  }
+  .btn-bookmark{
+    position:absolute;
+    right:0;
+    top:50%;
+    width:60px;
+    height:50px;
+    margin:0;
+    margin-top:-25px;
+    border:0;
+    background-color:transparent;
+    cursor:pointer;
+    &.active{
+      .ico{
+        background-image: url('#{$imgUrl}/e-icon-sellect-heart-detailpageireview-s@3x.png');
+      }
+      .count{
+        color:#ffc826;
+      }
+    }
+
+    > span{
+      display:inline-block;
+    }
+    .ico{
+      display:block;
+      width:14px;
+      height:14px;
+      margin:0 auto;
+      background: url('#{$imgUrl}/e-icon-sellect-heart-detailpageireview-n@3x.png') no-repeat 50%;
+      background-size:100% 100%;
+      overflow:hidden;
+      text-indent:-999px;
+    }
+    .count{
+      display:block;
+      margin-top:5px;
+      color:#9e9e9e;
+      font-size:11px;
+    }
+  }
+}
+@media screen and (min-width: $screen-md-min) {
+  .Mod_store-item{
+    .link-store{
+      padding:18px 0;
+    }
+    .name{
+      font-size:15px;
+    }
+    .tag{
+      font-size:13px;
+    }
+    .btn-bookmark{
+      .ico{
+        width:20px;
+        height:20px;
+      }
+      .count{
+        font-size:13px;
+      }
+    }
+  }
+}

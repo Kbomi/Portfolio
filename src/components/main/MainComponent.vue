@@ -1,6 +1,12 @@
 <template>
-  <div class="hello">
-    <h1>{{ msg }}</h1>
+  <div id="main">
+    <h1>Vue.js Project</h1>
+    <h2>연습</h2>
+    <ul>
+      <li>
+        <a href="/brandi">브랜디 메인</a>
+      </li>
+    </ul>
     <h2>Essential Links</h2>
     <ul>
       <li>
@@ -88,7 +94,6 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
     }
   }
 }
