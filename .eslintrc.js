@@ -26,11 +26,11 @@ module.exports = {
     'generator-star-spacing' : 'off',
     // allow debugger during development
     'no-debugger' : process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'key-spacing' : ['error', {'beforeColon' : true}],
+    // 'key-spacing' : ['error', {'beforeColon' : true}],
     'eqeqeq' : 'off',
     'padded-blocks' : 'off',
     'operator-linebreak' : ['error', 'before'],
-    'comma-dangle' : ['error', 'always-multiline'],
+    // 'comma-dangle' : ['error', 'always-multiline'],
   },
   globals : {
     'Swiper' : false,
