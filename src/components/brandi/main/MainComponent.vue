@@ -71,7 +71,7 @@
 </template>
 
 <script>
-import HeaderComponent from "../common/header";
+import HeaderComponent from "../common/header/HeaderComponent";
 import BannerComponent from "../main/BannerComponent";
 import FooterComponent from "../common/FooterComponent";
 export default {

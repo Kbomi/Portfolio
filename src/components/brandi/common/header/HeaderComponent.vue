@@ -1,11 +1,6 @@
 <template>
   <header id="header">
-    <div class="header-banner">
-      <img
-        src="https://image.brandi.me/home/bannerTest/bannerImage_333521_1617944060.jpg"
-        alt="패션뷰터 뷰티,리빙까지 한 곳에! 라이브 쇼핑앱 브랜디"
-      />
-    </div>
+    <HeaderBanner :isMobile="this.isMobile" />
     <div class="header-top-area">
       <h1>BRANDI</h1>
       <div class="top-area-right">
@@ -14,8 +9,8 @@
         </button>
         <div :class="{ show: showSearchArea }" class="search-form">
           <div class="search-form-inner">
-            <input type="text" />
-            <button class="btn-search">검색</button>
+            <input ref="searchInput" type="text" v-model="keyword" @blur="searchInputBlur" />
+            <button ref="searchButton" class="btn-search" @click="submitSearch">검색</button>
           </div>
         </div>
         <div class="btn-wrap">
@@ -74,8 +69,12 @@
 </template>
 
 <script>
+import HeaderBanner from './HeaderBanner'
 export default {
-  name: "HeaderBanner",
+  name: "Header",
+  components: {
+    HeaderBanner
+  },
   data() {
     return {
       showBtnTop: false,
@@ -83,10 +82,11 @@ export default {
       showSearchArea: false,
       isShowSubMenu: false,
       isNavFix: false,
+      keyword: ''
     };
   },
   methods: {
-    checkViewPort() {
+    checkViewPort() { //모바일, pc 구분
       const viewPort = window.innerWidth;
       if (viewPort > 768) {
         this.isMobile = false;
@@ -94,48 +94,39 @@ export default {
         this.isMobile = true;
       }
     },
-    setShowSearchArea() {
+    setShowSearchArea() { // 모바일 검색영역 열고 닫음
       this.showSearchArea = !this.showSearchArea;
-    },
-    initNavSlide() {
-      if (this.isMobile) {
-        this.swiperGnb = new Swiper(".swiper-container", {
-          paginationClickable: false,
-          spaceBetween: 0,
-          initialSlide: 0,
-          freeMode: false,
-          pagination: false,
-          breakpoints: {
-            768: {
-              slidesPerView: "auto",
-              spaceBetween: 20,
-              freeMode: true,
-            },
-          },
-        });
-      } else {
-        if (this.swiperGnb) {
-          this.swiperGnb.destroy();
-        }
+      if(this.showSearchArea) {
+        setTimeout(() => {
+          this.$refs.searchInput.focus()
+        }, 0);
       }
     },
-    setShowSubMenu(value) {
+    setShowSubMenu(value) { // nav 하위메뉴
       this.isShowSubMenu = value;
     },
-    handleScroll: function () {
+    handleScroll: function () { // 모바일 nav fixed
       if (window.scrollY >= this.fixNavPosition) {
         this.isNavFix = true;
       } else {
         this.isNavFix = false;
       }
     },
-    saveFixNavPosition() {
+    saveFixNavPosition() { // fixed 여부를 위한 원래 nav위치 저장
       if (this.isMobile) {
         this.fixNavPosition = this.$refs.fixNav.offsetTop;
       } else {
         this.fixNavPosition = this.$refs.fixHeader.offsetTop;
       }
     },
+    submitSearch() { // 검색
+      alert('검색어:', this.keyword)
+    },
+    searchInputBlur() {
+      if(!this.keyword) {
+        this.setShowSearchArea()
+      }
+    }
   },
 
   created() {
@@ -144,8 +135,14 @@ export default {
   },
   mounted() {
     this.checkViewPort();
-    this.initNavSlide();
     this.saveFixNavPosition();
+
+    // load nav swiper
+    this.swiperGnb = new Swiper("nav.swiper-container", {
+      slidesPerView: 'auto',
+      freeMode: true,
+      watchOverflow: true,
+    });
   },
   destroyed() {
     window.removeEventListener("scroll", this.handleScroll);
@@ -167,7 +164,7 @@ export default {
   position: relative;
   display: flex;
   justify-content: space-between;
-  padding: 16px;
+  padding: 16px 6px 16px 16px;
   @media screen and (min-width: $screen-sm-min) {
     padding: 32px 20px;
   }
@@ -207,6 +204,7 @@ h1 {
   border: none;
   text-indent: -999px;
   overflow: hidden;
+  cursor: pointer;
 
   @media screen and (min-width: $screen-sm-min) {
     width: 40px;
@@ -275,8 +273,12 @@ h1 {
     }
   }
   .btn-cart {
-    margin-left: 60px;
+    margin-left: 2px;
     background-image: url("/static/images/header/ic-cart.svg");
+
+    @media screen and (min-width: $screen-sm-min) {
+      margin-left: 60px;
+    }
   }
   .btn-favor {
     display: none;
@@ -295,12 +297,21 @@ h1 {
 }
 nav {
   border-top: 1px solid #ebeef2;
+
+  &.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #fff;
+  }
+
   @media screen and (min-width: $screen-sm-min) {
     overflow: visible;
   }
 
   ul {
-    padding: 14px 16px;
+    padding: 14px 6px;
     @media screen and (min-width: $screen-sm-min) {
       position: static;
       max-width: 1200px;
@@ -321,6 +332,7 @@ nav {
     }
   }
   a {
+    padding: 0 10px;
     font-size: 15px;
     font-weight: bold;
     line-height: normal;

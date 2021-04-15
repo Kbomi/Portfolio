@@ -78,15 +78,15 @@ export default {
   mounted() {
     this.bannerSlide = new Swiper(".banner.swiper-container", swiperOption);
   },
-  watch: {
-    isAutoPlay: function (oldValue, newValue) {
-      if (oldValue) {
-        this.bannerSlide.autoplay.start();
-      } else {
-        this.bannerSlide.autoplay.stop();
-      }
-    },
-  },
+  // watch: {
+  //   isAutoPlay: function (oldValue, newValue) {
+  //     if (oldValue) {
+  //       this.bannerSlide.autoplay.start();
+  //     } else {
+  //       this.bannerSlide.autoplay.stop();
+  //     }
+  //   },
+  // },
 };
 </script>
 

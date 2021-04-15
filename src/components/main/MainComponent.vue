@@ -1,10 +1,11 @@
 <template>
   <div id="main">
+    <img src="../../assets/logo.png">
     <h1>Vue.js Project</h1>
     <h2>연습</h2>
     <ul>
       <li>
-        <a href="/brandi">브랜디 메인</a>
+        <router-link to="/brandi">브랜디 메인</router-link>
       </li>
     </ul>
     <h2>Essential Links</h2>
