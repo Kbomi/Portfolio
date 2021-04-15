@@ -1,29 +1,33 @@
 <template>
   <header id="header">
     <HeaderBanner :isMobile="this.isMobile" />
-    <div class="header-top-area">
-      <h1>BRANDI</h1>
-      <div class="top-area-right">
-        <button v-if="isMobile" class="btn-search" @click="setShowSearchArea">
-          검색영역열기
-        </button>
-        <div :class="{ show: showSearchArea }" class="search-form">
-          <div class="search-form-inner">
-            <input ref="searchInput" type="text" v-model="keyword" @blur="searchInputBlur" />
-            <button ref="searchButton" class="btn-search" @click="submitSearch">검색</button>
+    <div ref="fixHeaderTopArea" 
+      :class="{ fixed: !isMobile && isNavFix }"
+      class="header-top-area">
+      <div class="header-top-area-inner">
+        <h1>BRANDI</h1>
+        <div class="top-area-right">
+          <button v-if="isMobile" class="btn-search" @click="setShowSearchArea">
+            검색영역열기
+          </button>
+          <div :class="{ show: showSearchArea }" class="search-form">
+            <div class="search-form-inner">
+              <input ref="searchInput" type="text" v-model="keyword" @blur="searchInputBlur" />
+              <button ref="searchButton" class="btn-search" @click="submitSearch">검색</button>
+            </div>
           </div>
-        </div>
-        <div class="btn-wrap">
-          <a href="#" class="btn-cart">장바구니</a>
-          <a href="#" class="btn-favor">찜</a>
-          <a href="#" class="btn-mypage">마이페이지</a>
+          <div class="btn-wrap">
+            <a href="#" class="btn-cart">장바구니</a>
+            <a href="#" class="btn-favor">찜</a>
+            <a href="#" class="btn-mypage">마이페이지</a>
+          </div>
         </div>
       </div>
     </div>
     <nav
       ref="fixNav"
-      class="swiper-container"
       :class="{ fixed: isMobile && isNavFix }"
+      class="swiper-container"
     >
       <ul class="swiper-wrapper">
         <li class="swiper-slide"><a href="#">홈</a></li>
@@ -116,15 +120,21 @@ export default {
       if (this.isMobile) {
         this.fixNavPosition = this.$refs.fixNav.offsetTop;
       } else {
-        this.fixNavPosition = this.$refs.fixHeader.offsetTop;
+        this.fixNavPosition = this.$refs.fixHeaderTopArea.offsetTop;
       }
     },
-    submitSearch() { // 검색
+    submitSearch() { // 검색 submit
+      if(!this.keyword) {
+        alert('검색어를 입력해주세요.')
+        return false
+      }
       alert('검색어:', this.keyword)
     },
-    searchInputBlur() {
-      if(!this.keyword) {
-        this.setShowSearchArea()
+    searchInputBlur() { // 개선필요
+      if(this.isMobile) {
+        if(!this.keyword) {
+          this.setShowSearchArea()
+        }
       }
     }
   },
@@ -156,21 +166,37 @@ export default {
   width: 100%;
   margin: auto;
   vertical-align: middle;
-  @media screen and (min-width: $screen-sm-min) {
+  @media screen and (min-width: $screen-md-min) {
     max-width: 100%;
   }
 }
 .header-top-area {
   position: relative;
-  display: flex;
-  justify-content: space-between;
   padding: 16px 6px 16px 16px;
-  @media screen and (min-width: $screen-sm-min) {
-    padding: 32px 20px;
+
+  &-inner {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    @media screen and(min-width: $screen-lg-min) {
+      max-width: 1200px;
+      margin: auto;
+    }
   }
-  @media screen and(min-width: $screen-lg-min) {
-    max-width: 1200px;
-    margin: auto;
+
+  @media screen and (min-width: $screen-md-min) {
+    padding: 32px 20px;
+
+    &.fixed {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 999;
+      width: 100%;
+      padding: 16px 20px;
+      background: #fff;
+    }
   }
 }
 h1 {
@@ -182,7 +208,7 @@ h1 {
   text-indent: -999px;
   overflow: hidden;
 
-  @media screen and (min-width: $screen-sm-min) {
+  @media screen and (min-width: $screen-md-min) {
     width: 182px;
     height: 42px;
   }
@@ -191,7 +217,7 @@ h1 {
   display: flex;
   margin: -10px 0;
 
-  @media screen and (min-width: $screen-sm-min) {
+  @media screen and (min-width: $screen-md-min) {
     margin: 0;
   }
 }
@@ -206,7 +232,7 @@ h1 {
   overflow: hidden;
   cursor: pointer;
 
-  @media screen and (min-width: $screen-sm-min) {
+  @media screen and (min-width: $screen-md-min) {
     width: 40px;
     height: 40px;
   }
@@ -214,7 +240,7 @@ h1 {
 .search-form {
   display: none;
 
-  @media screen and (min-width: $screen-sm-min) {
+  @media screen and (min-width: $screen-md-min) {
     display: block;
     width: 304px;
   }
@@ -229,7 +255,7 @@ h1 {
     padding: 14px 16px;
     background: #fff;
 
-    @media screen and (min-width: $screen-sm-min) {
+    @media screen and (min-width: $screen-md-min) {
       padding: 0;
     }
   }
@@ -247,7 +273,7 @@ h1 {
     margin: -10px 0;
     background-position: right center;
 
-    @media screen and (min-width: $screen-sm-min) {
+    @media screen and (min-width: $screen-md-min) {
       margin: 0;
     }
   }
@@ -266,31 +292,31 @@ h1 {
     text-indent: -999px;
     overflow: hidden;
 
-    @media screen and (min-width: $screen-sm-min) {
+    @media screen and (min-width: $screen-md-min) {
       width: 40px;
       height: 40px;
       margin-left: 20px;
     }
   }
   .btn-cart {
-    margin-left: 2px;
+    margin-left: -8px;
     background-image: url("/static/images/header/ic-cart.svg");
 
-    @media screen and (min-width: $screen-sm-min) {
+    @media screen and (min-width: $screen-md-min) {
       margin-left: 60px;
     }
   }
   .btn-favor {
     display: none;
     background-image: url("/static/images/header/ic-favorite.svg");
-    @media screen and (min-width: $screen-sm-min) {
+    @media screen and (min-width: $screen-md-min) {
       display: block;
     }
   }
   .btn-mypage {
     display: none;
     background-image: url("/static/images/header/ic-my.svg");
-    @media screen and (min-width: $screen-sm-min) {
+    @media screen and (min-width: $screen-md-min) {
       display: block;
     }
   }
@@ -306,13 +332,13 @@ nav {
     background: #fff;
   }
 
-  @media screen and (min-width: $screen-sm-min) {
+  @media screen and (min-width: $screen-md-min) {
     overflow: visible;
   }
 
   ul {
     padding: 14px 6px;
-    @media screen and (min-width: $screen-sm-min) {
+    @media screen and (min-width: $screen-md-min) {
       position: static;
       max-width: 1200px;
       margin: auto;
@@ -322,7 +348,7 @@ nav {
   li {
     width: auto;
     text-align: center;
-    @media screen and (min-width: $screen-sm-min) {
+    @media screen and (min-width: $screen-md-min) {
       position: static;
       margin-left: 80px;
 
