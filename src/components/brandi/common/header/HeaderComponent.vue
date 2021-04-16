@@ -445,6 +445,10 @@ nav {
   background: #fff;
   z-index: 999;
 
+  @media screen and (min-width: $screen-md-min) {    
+    display: none;
+  }
+
   ul {
     display: flex;
   }

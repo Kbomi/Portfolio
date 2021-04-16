@@ -33,42 +33,44 @@
       </ul>
     </div>
     <address>
-      <div class="info-company">
-        <button
-          :class="{ show: isShowCompanyInfo }"
-          @click="setShowCompanyInfo"
-        >
-          (주)브랜디
-        </button>
-        <div v-if="isShowCompanyInfo" class="desc">
-          <p>대표이사 : 서정민</p>
-          <p>사업자등록번호 : 220-88-93187</p>
-          <p>통신판매업신고 : 2016-서울강남-00359</p>
-          <p>호스팅사업자 : (주)브랜디</p>
+      <div class="address-inner">
+        <div class="info-company">
+          <button
+            :class="{ show: isShowCompanyInfo }"
+            @click="setShowCompanyInfo"
+          >
+            (주)브랜디
+          </button>
+          <div v-if="isShowCompanyInfo" class="desc">
+            <p>대표이사 : 서정민</p>
+            <p>사업자등록번호 : 220-88-93187</p>
+            <p>통신판매업신고 : 2016-서울강남-00359</p>
+            <p>호스팅사업자 : (주)브랜디</p>
+            <p>
+              주소 : 서울 강남구 테헤란로38길 12 (역삼동) 디앤와이빌딩 (06221)
+            </p>
+            <p>
+              개인정보관리책임자 : 윤석호(<a href="#">privacy@brandi.co.kr</a>)
+            </p>
+          </div>
           <p>
-            주소 : 서울 강남구 테헤란로38길 12 (역삼동) 디앤와이빌딩 (06221)
-          </p>
-          <p>
-            개인정보관리책임자 : 윤석호(<a href="#">privacy@brandi.co.kr</a>)
+            브랜디는 통신판매중개자로서 통신판매 당사자가 아니며, 판매자가 등록한
+            상품정보 및 거래에 브랜디는 책임을 지지 않습니다.
           </p>
         </div>
-        <p>
-          브랜디는 통신판매중개자로서 통신판매 당사자가 아니며, 판매자가 등록한
-          상품정보 및 거래에 브랜디는 책임을 지지 않습니다.
-        </p>
-      </div>
-      <div class="info-cs">
-        <p>고객센터 <a href="tel:000-0000">1566-6575</a></p>
-        <dl>
-          <dt>영업시간</dt>
-          <dd>AM 10:00 ~ PM 17:00 (주말 및 공휴일 휴무)</dd>
-          <dt>점심시간</dt>
-          <dd>PM 12:30 ~ PM 13:30</dd>
-          <dt>고객문의</dt>
-          <dd>
-            <a href="mailto:brandics@brandi.co.kr">brandics@brandi.co.kr</a>
-          </dd>
-        </dl>
+        <div class="info-cs">
+          <p>고객센터 <a href="tel:000-0000">1566-6575</a></p>
+          <dl>
+            <dt>영업시간</dt>
+            <dd>AM 10:00 ~ PM 17:00 (주말 및 공휴일 휴무)</dd>
+            <dt>점심시간</dt>
+            <dd>PM 12:30 ~ PM 13:30</dd>
+            <dt>고객문의</dt>
+            <dd>
+              <a href="mailto:brandics@brandi.co.kr">brandics@brandi.co.kr</a>
+            </dd>
+          </dl>
+        </div>
       </div>
     </address>
   </footer>
@@ -80,21 +82,21 @@ export default {
   data() {
     return {
       isShowCompanyInfo: false,
-      isMobile: false,
     };
   },
   methods: {
     setShowCompanyInfo() {
-      console.log('this.isMobile', this.isMobile)
-      if (this.isMobile) {
+      const viewSize = window.innerWidth
+      if (viewSize < 769) {
         this.isShowCompanyInfo = !this.isShowCompanyInfo;
       }
     },
-    checkViewPort(viewPort) {
+    checkViewPort() {
+      const viewPort = window.innerWidth
       if (viewPort > 768) {
-        this.isMobile = false;
+        this.isShowCompanyInfo = true;
       } else {
-        this.isMobile = true;
+        this.isShowCompanyInfo = false;
       }
     },
   },
@@ -105,8 +107,8 @@ export default {
     window.removeEventListener("resize", this.checkViewPort(window.innerWidth));
   },
   mounted() {
-    window.innerWidth > 768 ? (this.isMobile = false) : (this.isMobile = true);
-  },
+    this.checkViewPort()
+  }
 };
 </script>
 
@@ -121,25 +123,34 @@ footer {
   border-top: 1px solid #ebeef2;
   background-color: rgba(242, 244, 247, 0.6);
 
-  @media screen and (min-width: $screen-sm-min) {
+  @media screen and (min-width: $screen-md-min) {
+    margin-top: 160px;
     padding: 20px 0 140px;
   }
 }
 .footer-top-area {
   display: flex;
   flex-direction: column;
-  @media screen and (min-width: $screen-sm-min) {
+
+  @media screen and (min-width: $screen-lg-min) {
     flex-direction: row;
     justify-content: space-between;
-  }
-  @media screen and (min-width: $screen-lg-min) {
     max-width: 1200px;
+    padding-right: 20px;
+    padding-left: 20px;
+    margin: 0 auto;
   }
 }
 .terms-list {
   display: flex;
   align-items: center;
   padding: 0 16px;
+  
+  @media screen and (min-width: $screen-lg-min) {
+    margin-left: -12px;
+    padding: 0;
+  }
+
   li:first-child a::before {
     display: none;
   }
@@ -148,7 +159,7 @@ footer {
     color: #5f6773;
     font-size: 11px;
 
-    @media screen and (min-width: $screen-sm-min) {
+    @media screen and (min-width: $screen-lg-min) {
       position: relative;
       padding: 0 12px;
       font-size: 14px;
@@ -169,13 +180,13 @@ footer {
   display: flex;
   margin-top: 12px;
   padding: 0 16px;
-  @media screen and (min-width: $screen-sm-min) {
+  @media screen and (min-width: $screen-lg-min) {
     margin: 0;
     padding: 0;
   }
   li {
     padding: 0 5px 10px;
-    @media screen and (min-width: $screen-sm-min) {
+    @media screen and (min-width: $screen-lg-min) {
       padding: 0 8px;
     }
   }
@@ -187,7 +198,7 @@ footer {
     background-position: center;
     background-size: cover;
 
-    @media screen and (min-width: $screen-sm-min) {
+    @media screen and (min-width: $screen-lg-min) {
       display: flex;
       align-items: center;
       width: auto;
@@ -217,14 +228,25 @@ address {
   padding: 20px 16px 0;
   border-top: 1px solid #ebeef2;
 
-  @media screen and (min-width: $screen-sm-min) {
+  @media screen and (min-width: $screen-md-min) {
     display: flex;
     justify-content: space-between;
     padding-top: 40px;
   }
 }
+.address-inner {
+  @media screen and (min-width: $screen-md-min) {
+    display: flex;
+  }
+  @media screen and (min-width: $screen-lg-min) {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+}
 .info-company {
-  @media screen and (min-width: $screen-sm-min) {
+  @media screen and (min-width: $screen-md-min) {
     width: calc(100% - 360px);
   }
   button {
@@ -237,7 +259,7 @@ address {
     font-style: normal;
     color: #313842;
 
-    @media screen and (min-width: $screen-sm-min) {
+    @media screen and (min-width: $screen-md-min) {
       font-size: 18px;
       cursor: default;
       &:focus {
@@ -255,7 +277,7 @@ address {
       background: url('/static/images/footer/ic-more-down-m.svg') no-repeat center;
       transform: translateY(-50%);
 
-      @media screen and (min-width: $screen-sm-min) {
+      @media screen and (min-width: $screen-md-min) {
         display: none;
       }
     }
@@ -271,7 +293,7 @@ address {
     line-height: 16px;
     font-style: normal;
 
-    @media screen and (min-width: $screen-sm-min) {
+    @media screen and (min-width: $screen-md-min) {
       margin: 0;
       font-size: 14px;
       line-height: 1.71;
@@ -287,7 +309,7 @@ address {
       line-height: 16px;
       font-style: normal;
 
-      @media screen and (min-width: $screen-sm-min) {
+      @media screen and (min-width: $screen-md-min) {
         font-size: 14px;
         line-height: 1.71;
       }
@@ -298,7 +320,7 @@ address {
   }
 }
 .info-cs {
-  @media screen and (min-width: $screen-sm-min) {
+  @media screen and (min-width: $screen-md-min) {
     width: 360px;
   }
   p {

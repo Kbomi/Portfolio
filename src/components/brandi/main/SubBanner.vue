@@ -25,9 +25,9 @@ const swiperOption = {
     768: {
       spaceBetween: 8,
       slidesOffsetBefore : 16,
-      slidesOffsetAfter : 16,
-    },
-  },
+      slidesOffsetAfter : 16
+    }
+  }
 };
 
 export default {
@@ -48,9 +48,19 @@ export default {
 <style lang='scss' scoped>
 .sub-banner {
   margin-top: 60px;
+
+  @media screen and (min-width: $screen-lg-min) {
+    max-width: 1160px;
+    margin-right: auto;
+    margin-left: auto;
+  }
 }
 .swiper-slide {
   max-width: 87.777%;
+
+  @media screen and (min-width: $screen-md-min) {
+    max-width: 50%;
+  }
 
   img {
     width: 100%;

@@ -96,25 +96,35 @@
           <div class="list-title">
             <h2>놓칠 수 없는 브랜디 특가</h2>
           </div>
-          <ul class="prd-list slide-prd-list time-list">
-            <li v-for="(item, index) in todayPrdList" :key="index">
-              <a href="/">
-                <div class="thumbnail"
-                  :style="{backgroundImage: 'url('+ item.thumbImage +')'}"
-                >
-                  <span class="index percent">{{ index + 40 }}%</span>
-                </div>
-                <div class="desc">
-                  <p class="time">
-                    <span>남은시간</span>
-                    123:05:55
-                  </p>
-                  <p class="info-product">{{ item.product_name }}</p>
-                  <div class="info-price">{{ item.price }}</div>
-                </div>
-              </a>
-            </li>
-          </ul>
+          <div class="brandi_price-inner">
+            <img v-if="!isMobile" src="/static/images/img-specialprice@3x.png" alt="BRANDI TIME PRICE" />
+            <div class="swiper-container">
+              <ul class="prd-list slide-prd-list time-list swiper-wrapper">
+                <li v-for="(item, index) in todayPrdList" :key="index" class="swiper-slide">
+                  <a href="#">
+                    <div class="thumbnail"
+                      :style="{backgroundImage: 'url('+ item.thumbImage +')'}"
+                    >
+                      <span class="index percent">{{ index + 40 }}%</span>
+                    </div>
+                    <div class="desc">
+                      <p class="time">
+                        <span>남은시간</span>
+                        123:05:55
+                      </p>
+                      <p class="info-product">{{ item.product_name }}</p>
+                      <div class="info-price">{{ item.price }}</div>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+              <div class="swiper-pagination">
+                <div />
+                <button class="swiper-button swiper-button-prev">이전</button>
+                <button class="swiper-button swiper-button-next">다음</button>
+              </div>
+            </div>
+          </div>
         </div>
         <div class="main-prd-list today">
           <div class="list-title">
@@ -221,7 +231,8 @@ export default {
     return {
       todayPrdList: [],
       showBtnTop: false,
-      eventList: []
+      eventList: [],
+      isMobile: true
     };
   },
   methods: {
@@ -235,6 +246,14 @@ export default {
         this.showBtnTop = false;
       }
     },
+    checkViewPort() { //모바일, pc 구분
+      const viewPort = window.innerWidth;
+      if (viewPort > 768) {
+        this.isMobile = false;
+      } else {
+        this.isMobile = true;
+      }
+    }
   },
   mounted() {
     // 임시 데이터 넣기
@@ -256,13 +275,31 @@ export default {
         })
       }
     }
+    this.checkViewPort();
   },
   created() {
     window.addEventListener("scroll", this.setSowBtnTop);
   },
   destroyed() {
-    window.addEventListener("scroll", this.setSowBtnTop);
+    window.removeEventListener("scroll", this.setSowBtnTop);
   },
+  watch: {
+    isMobile: function(value) {
+      if(!value) {
+        this.brandiPriceSlide = new Swiper('.brandi_price .swiper-container', {
+          slidesPerView: 3,
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
+          pagination: {
+            el: ".swiper-pagination > div",
+            type: "fraction",
+          },
+        })
+      }
+    }
+  }
 };
 </script>
 
@@ -278,7 +315,7 @@ export default {
     word-break: break-word;
     color: #202429;
 
-    @media screen and (min-width: $screen-sm-min) {
+    @media screen and (min-width: $screen-md-min) {
       font-size: 32px;
       margin: 0;
     }
@@ -288,14 +325,19 @@ export default {
     justify-content: center;
     margin-bottom: 12px;
 
-    @media screen and (min-width: $screen-sm-min) {
+    @media screen and (min-width: $screen-md-min) {
       margin: 0;
       font-size: 17px;
     }
 
     li:not(:first-child) {
       margin-left: 5px;
+
+      @media screen and (min-width: $screen-md-min) {
+        margin-left: 32px;
+      }
     }
+
     button {
       display: block;
       padding: 0 4px 4px;
@@ -322,8 +364,9 @@ export default {
     color: #5f6773;
     text-align: center;
 
-    @media screen and (min-width: $screen-sm-min) {
+    @media screen and (min-width: $screen-md-min) {
       max-width: 320px;
+      margin-bottom: 0;
       font-size: 14px;
     }
 
@@ -354,7 +397,9 @@ export default {
   }
   @media screen and (min-width: $screen-lg-min) {
     max-width: 1200px;
-    margin: auto;
+    padding: 0 20px;
+    margin-right: auto;
+    margin-left: auto;
   }
 }
 .today_best_prd {
@@ -364,10 +409,40 @@ export default {
     margin-top: 80px;
   }
 }
+.brandi_price {
+  @media screen and (min-width: $screen-md-min) {
+    position: relative;
+  }
+
+  &-inner {
+    @media screen and (min-width: $screen-md-min) {
+      display: flex;
+
+      img {
+        width: 320px;
+        margin-right: 40px;
+        vertical-align: middle;
+      }
+    }
+  }
+  .swiper-container {
+    position: static;
+  }
+  .swiper-pagination {
+    display: none;
+    @media screen and (min-width: $screen-md-min) {
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 995;
+      display: block;
+    }
+  }
+}
 .list-title {
   display: flex;
   flex-direction: column;
-  @media screen and (min-width: $screen-sm-min) {
+  @media screen and (min-width: $screen-md-min) {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
@@ -378,9 +453,20 @@ export default {
   display: flex;
   flex-direction: column;
 
+  @media screen and (min-width: $screen-md-min) {
+    flex-direction: row;
+    margin: 0 -16px;
+  }
+
   .contents {
     margin-bottom: 24px;
     border-bottom: 1px solid #ebeef2;
+
+    @media screen and (min-width: $screen-md-min) {
+      margin-bottom: 0;
+      padding: 0 16px;
+      border: none;
+    }
 
     img {
       width: 100%;
@@ -432,14 +518,21 @@ export default {
     padding: 0 0 0 12px;
     white-space: nowrap;
 
-    @media screen and (min-width: $screen-sm-min) {
+    @media screen and (min-width: $screen-md-min) {
       display: flex;
       flex-wrap: wrap;
+      width: 100%;
+      margin: 0 -8px;
+      padding: 0;
     }
-
+    
     li {
       display: inline-block;
       padding-bottom: 0;
+
+      @media screen and (min-width: $screen-md-min) {
+        padding-bottom: 50px;
+      }
     }
   }
 
@@ -495,9 +588,9 @@ export default {
     width: 50%;
     padding: 0 4px 20px;
 
-    @media screen and (min-width: $screen-sm-min) {
+    @media screen and (min-width: $screen-md-min) {
       width: 25%;
-      padding: 0 8px 40px;
+      padding: 0 8px 50px;
     }
   }
   p {
@@ -539,7 +632,7 @@ export default {
     font-size: 12px;
     font-style: normal;
 
-    @media screen and (min-width: $screen-sm-min) {
+    @media screen and (min-width: $screen-md-min) {
       font-size: 13px;
     }
   }
@@ -553,7 +646,7 @@ export default {
     font-size: 13px;
     font-style: normal;
     color: #202429;
-    @media screen and (min-width: $screen-sm-min) {
+    @media screen and (min-width: $screen-md-min) {
       margin-top: 4px;
       font-size: 15px;
     }
@@ -566,7 +659,7 @@ export default {
     font-style: normal;
     color: #202429;
 
-    @media screen and (min-width: $screen-sm-min) {
+    @media screen and (min-width: $screen-md-min) {
       margin-top: 8px;
       font-size: 18px;
     }
@@ -576,7 +669,7 @@ export default {
       color: #ff204b;
       font-size: 15px;
       font-weight: bold;
-      @media screen and (min-width: $screen-sm-min) {
+      @media screen and (min-width: $screen-md-min) {
         margin-right: 6px;
       }
     }
