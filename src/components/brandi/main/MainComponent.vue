@@ -269,29 +269,24 @@ export default {
       }
     },
     initPriceSlide() {
-      if(this.isMobile) {
-        console.log('destroy')
-        this.brandiPriceSlide.destroy()
-      } else {
-        console.log('Swiper')
-        this.brandiPriceSlide = new Swiper('.brandi_price .swiper-container', {
-          slidesPerView: 'auto',
-          spaceBetween : 40,
-          autoHeight : true,
-          freeMode : true,
-          slidesOffsetBefore : 16,
-          slidesOffsetAfter : 16,
-          autoHeight: true,
-          navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-          },
-          pagination: {
-            el: ".swiper-pagination > div",
-            type: "fraction",
-          },
-        })
-      }
+      this.brandiPriceSlide = new Swiper('.brandi_price .swiper-container', {
+        slidesPerView: 'auto',
+        autoplay: true,
+        autoHeight : true,
+        freeMode : true,
+        slidesOffsetBefore : 16,
+        slidesOffsetAfter : 16,
+        autoHeight: true,
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        pagination: {
+          el: ".swiper-pagination > div",
+          type: "fraction",
+        },
+      })
+      console.log('brandiPriceSlide:', this.brandiPriceSlide)
     }
   },
   mounted() {
@@ -325,8 +320,12 @@ export default {
     window.removeEventListener("resize", this.checkViewPort)
   },
   watch: {
-    isMobile: function() {
-      this.initPriceSlide()
+    isMobile: function(value) {
+      if(value) {
+        this.brandiPriceSlide.destroy()
+      } else {
+        this.initPriceSlide()
+      }
     }
   }
 };
@@ -569,19 +568,17 @@ export default {
   &.time-list {
     flex-wrap: nowrap;
     width: auto;
-    padding-left: 10px;
 
     @media screen and (min-width: $screen-md-min) {
-      margin-right: -40px;
+      width: calc(100% + 40px);
+      margin: 0 -40px;
       padding: 0;
     }
 
     li {
-      padding: 0 6px;
-
       @media screen and (min-width: $screen-md-min) {
-        width: calc((100% / 3) - 40px);
-        padding: 0;
+        width: calc((100% / 3));
+        padding: 0 20px;
       }
     }
     a {
