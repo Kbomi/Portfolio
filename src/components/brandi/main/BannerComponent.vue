@@ -185,11 +185,11 @@ export default {
   }
 }
 .swiper-button-prev {
-  left: 48px;
+  left: 6.5%;
   background: url("/static/images/ic-arrow-l@3x.png") no-repeat center/180%;
 }
 .swiper-button-next {
-  right: 48px;
+  right: 6.5%;
   background: url("/static/images/ic-arrow-r@3x.png") no-repeat center/180%;
 }
 </style>

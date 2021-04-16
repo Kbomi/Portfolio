@@ -35,7 +35,7 @@
           </ul>
           <a href="/" class="btn btn-link"><span>베스트 </span>더보기 <i /></a>
         </div>
-        <div class="main-prd-list new_prd">
+        <!-- <div class="main-prd-list new_prd">
           <div class="list-title">
             <h2>신상 모아보기</h2>
             <ul class="tab-list">
@@ -66,9 +66,9 @@
           <a href="/" class="btn btn-link"
             ><span>브랜드 신상 </span>더보기 <i
           /></a>
-        </div>
+        </div> -->
         <SubBanner />
-        <div class="main-prd-list for_you_prd">
+        <!-- <div class="main-prd-list for_you_prd">
           <div class="list-title">
             <h2>당신을 위한 추천</h2>
           </div>
@@ -91,8 +91,15 @@
               </a>
             </li>
           </ul>
-        </div>
-        <div class="main-prd-list brandi_price">
+          <div class="swiper-pagination">
+            <div class="swiper-pagination-fraction">
+              <span class="swiper-pagination-current">1</span> / <span class="swiper-pagination-total">6</span>
+            </div>
+            <button class="swiper-button swiper-button-prev">이전</button>
+            <button class="swiper-button swiper-button-next">다음</button>
+          </div>
+        </div> -->
+        <!-- <div class="main-prd-list brandi_price">
           <div class="list-title">
             <h2>놓칠 수 없는 브랜디 특가</h2>
           </div>
@@ -125,7 +132,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </div> -->
         <div class="main-prd-list today">
           <div class="list-title">
             <h2><img src="/static/images/ic-haru-l.svg" alt="하루배송"/>상품은 내일 도착</h2>
@@ -206,6 +213,13 @@
             </div>
           </div>
           <a href="/" class="btn btn-link"><span>더 많은 기획전 </span>보러가기 <i /></a>
+          <div class="swiper-pagination">
+            <div class="swiper-pagination-fraction">
+              <span class="swiper-pagination-current">1</span> / <span class="swiper-pagination-total">6</span>
+            </div>
+            <button class="swiper-button swiper-button-prev">이전</button>
+            <button class="swiper-button swiper-button-next">다음</button>
+          </div>
         </div>
       </div>
     </div>
@@ -253,6 +267,19 @@ export default {
       } else {
         this.isMobile = true;
       }
+    },
+    initPriceSlide() {
+      this.brandiPriceSlide = new Swiper('.brandi_price .swiper-container', {
+        slidesPerView: 3,
+        navigation: {
+          nextEl: ".swiper-button-next",
+          prevEl: ".swiper-button-prev",
+        },
+        pagination: {
+          el: ".swiper-pagination > div",
+          type: "fraction",
+        },
+      })
     }
   },
   mounted() {
@@ -276,27 +303,23 @@ export default {
       }
     }
     this.checkViewPort();
+    if(window.innerWidth > 768) {
+      this.initPriceSlide()
+    }
   },
   created() {
     window.addEventListener("scroll", this.setSowBtnTop);
+    window.addEventListener("resize", this.checkViewPort)
   },
   destroyed() {
     window.removeEventListener("scroll", this.setSowBtnTop);
+    window.removeEventListener("resize", this.checkViewPort)
   },
   watch: {
     isMobile: function(value) {
+      console.log('value:', value)
       if(!value) {
-        this.brandiPriceSlide = new Swiper('.brandi_price .swiper-container', {
-          slidesPerView: 3,
-          navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-          },
-          pagination: {
-            el: ".swiper-pagination > div",
-            type: "fraction",
-          },
-        })
+        this.initPriceSlide()
       }
     }
   }
@@ -392,6 +415,7 @@ export default {
   padding: 0 16px;
 
   @media screen and (min-width: $screen-md-min) {
+    position: relative;
     margin-top: 100px;
     padding: 0 32px;
   }
@@ -417,6 +441,7 @@ export default {
   &-inner {
     @media screen and (min-width: $screen-md-min) {
       display: flex;
+      align-items: flex-start;
 
       img {
         width: 320px;
@@ -427,15 +452,9 @@ export default {
   }
   .swiper-container {
     position: static;
-  }
-  .swiper-pagination {
-    display: none;
     @media screen and (min-width: $screen-md-min) {
-      position: absolute;
-      top: 0;
-      right: 0;
-      z-index: 995;
-      display: block;
+      width: 100%;
+      max-width: calc(100% - 320px - 40px);
     }
   }
 }
@@ -508,26 +527,28 @@ export default {
   flex-wrap: wrap;
   margin: 0 -4px;
 
+  @media screen and (min-width: $screen-md-min)  {
+    margin: 0 -8px;
+  }
+
   &.slide-prd-list {
     overflow-x: auto;
     overflow-y: hidden;
-    display: block;
-    width: calc(100% + 40px);
-    height: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    width: 100%;
     margin: 0 -20px;
-    padding: 0 0 0 12px;
-    white-space: nowrap;
 
     @media screen and (min-width: $screen-md-min) {
       display: flex;
       flex-wrap: wrap;
-      width: 100%;
+      width: calc(100% + 16px);
       margin: 0 -8px;
       padding: 0;
     }
     
     li {
-      display: inline-block;
+      width: calc(100% + 40px);
       padding-bottom: 0;
 
       @media screen and (min-width: $screen-md-min) {
@@ -540,8 +561,20 @@ export default {
     width: auto;
     padding-left: 10px;
 
+    @media screen and (min-width: $screen-md-min) {
+      padding: 0;
+    }
+
     li {
       padding: 0 6px;
+
+      @media screen and (min-width: $screen-md-min) {
+      }
+    }
+    a {
+      @media screen and (min-width: $screen-md-min) {
+        display: block;
+      }
     }
     .thumbnail .index.percent {
       width: 50px;
@@ -579,8 +612,16 @@ export default {
   &.normal-list {
     margin-top: 8px;
     
+    @media screen and (min-width: $screen-md-min) {
+      margin-top: 12px;
+    }
+    
     li {
       width: calc(100% / 3);
+
+      @media screen and (min-width: $screen-md-min) {
+        padding: 0 6px 50px;
+      }
     }
   }
 
@@ -590,7 +631,7 @@ export default {
 
     @media screen and (min-width: $screen-md-min) {
       width: 25%;
-      padding: 0 8px 50px;
+      padding: 0 8px 40px;
     }
   }
   p {
@@ -687,5 +728,44 @@ export default {
   background-color: transparent;
   border: none;
   z-index: 998;
+}
+// swiper pagination css
+.swiper-pagination {
+  display: none;
+  @media screen and (min-width: $screen-md-min) {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    right: 20px;
+    z-index: 995;
+  }
+}
+.swiper-pagination-fraction {
+  margin-right: 12px;
+  font-size: 16px;
+  font-weight: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  color: #808893;
+}
+.swiper-button {
+  position: static;
+  min-width: 40px;
+  height: 40px;
+  margin-top: 0;
+  border: none;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  text-indent: -999px;
+  overflow: hidden;
+}
+.swiper-button-prev {
+  background-image: url('/static/images/ic-square-arrow-l-s@3x.png');
+}
+.swiper-button-next {
+  background-image: url('/static/images/ic-square-arrow-r-s@3x.png');
 }
 </style>
