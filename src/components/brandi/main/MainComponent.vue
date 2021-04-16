@@ -343,6 +343,8 @@ export default {
   }
 }
 .main-prd-list {
+  width: 100%;
+  overflow: hidden;
   margin-top: 60px;
   padding: 0 16px;
 

@@ -69,6 +69,16 @@
         <li class="swiper-slide"><a href="#">스토어</a></li>
       </ul>
     </nav>
+    <!-- fixed tab nav -->
+    <div class="TabBar_nav">
+      <ul>
+        <li><a href="/" class="tab-home">홈</a></li>
+        <li><a href="/" class="tab-oneday">하루배송</a></li>
+        <li><a href="/" class="tab-category">카테고리</a></li>
+        <li><a href="/" class="tab-favor">찜</a></li>
+        <li><a href="/" class="tab-my">MY</a></li>
+      </ul>
+    </div>
   </header>
 </template>
 
@@ -424,6 +434,47 @@ nav {
         font-weight: bold;
       }
     }
+  }
+}
+.TabBar_nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  border-top: 1px solid #bcbcbd;
+  background: #fff;
+  z-index: 999;
+
+  ul {
+    display: flex;
+  }
+  li {
+    width: 20%;
+    padding: 14px 3px;
+  }
+  a {
+    display: block;
+    background-repeat: no-repeat;
+    background-size: 28px;
+    background-position: center;
+    min-height: 28px;
+    text-indent: -999px;
+    overflow: hidden;
+  }
+  .tab-home {
+    background-image: url("/static/images/ic-gnb-aos-home-brandi-s@2x.png");
+  }
+  .tab-oneday {
+    background-image: url("/static/images/ic-gnb-aos-haru-n@2x.png");
+  }
+  .tab-category {
+    background-image: url("/static/images/ic-gnb-aos-categoryline-n@2x.png");
+  }
+  .tab-favor {
+    background-image: url("/static/images/ic-gnb-aos-heart-n@2x.png");
+  }
+  .tab-my {
+    background-image: url("/static/images/ic-gnb-aos-my-n@2x.png");
   }
 }
 </style>

@@ -105,7 +105,6 @@ export default {
     window.removeEventListener("resize", this.checkViewPort(window.innerWidth));
   },
   mounted() {
-    console.log(window.innerWidth)
     window.innerWidth > 768 ? (this.isMobile = false) : (this.isMobile = true);
   },
 };
