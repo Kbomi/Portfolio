@@ -3,20 +3,20 @@
     <div class="swiper-wrapper">
       <div class="swiper-slide">
         <img
-          src="https://image.brandi.me/home/banner/bannerImage_22_1617875585.jpg"
-          alt="배너슬라이드_원어데이"
+          src="/static/images/main/banner/mainBanner1.jpeg"
+          alt="집콕 아이템 특가"
         />
       </div>
       <div class="swiper-slide">
         <img
-          src="https://image.brandi.me/home/banner/bannerImage_8_1617790084.jpg"
-          alt="배너슬라이드_봄신상가득"
+          src="/static/images/main/banner/mainBanner2.jpeg"
+          alt="바닐라슈 단독 초특가"
         />
       </div>
       <div class="swiper-slide">
         <img
-          src="https://image.brandi.me/home/banner/bannerImage_26_1617875585.jpg"
-          alt="배너슬라이드_슬기로운집콕생활"
+          src="/static/images/main/banner/mainBanner3.jpeg"
+          alt="4월 할인 챙기세요"
         />
       </div>
     </div>
@@ -48,6 +48,7 @@ const swiperOption = {
     prevEl: ".swiper-button-prev",
   },
   autoplay: {
+    el: 'ic-pause',
     delay: 3000,
   },
   pagination: {
@@ -96,7 +97,7 @@ export default {
   margin-bottom: 50px;
   font-size: 20px;
 
-  @media screen and (min-width: $screen-sm-min) {
+  @media screen and (min-width: $screen-md-min) {
     margin-bottom: 80px;
   }
 }
@@ -105,7 +106,7 @@ export default {
   align-items: center;
   justify-content: center;
 
-  @media screen and (min-width: $screen-sm-min) {
+  @media screen and (min-width: $screen-md-min) {
     position: relative;
     &::before {
       content: "";
@@ -137,14 +138,15 @@ export default {
     margin-right: 4px;
     @include backgroundImage(
       $image: "/static/images/ic-stop-m@3x.png",
-      $size: 50%
+      $size: 12px
     );
+    border: none;
     border-radius: 50%;
     background-color: rgba(32, 36, 41, 0.8);
     overflow: hidden;
     text-indent: -9999px;
 
-    @media screen and (min-width: $screen-sm-min) {
+    @media screen and (min-width: $screen-md-min) {
       min-width: 38px;
       height: 38px;
       margin-right: 8px;
@@ -163,7 +165,7 @@ export default {
   text-align: center;
   color: #fff;
 
-  @media screen and (min-width: $screen-sm-min) {
+  @media screen and (min-width: $screen-md-min) {
     min-width: 80px;
     padding: 10px 18px;
     font-size: 14px;
@@ -178,7 +180,7 @@ export default {
   text-indent: -999px;
   overflow: hidden;
 
-  @media screen and (min-width: $screen-sm-min) {
+  @media screen and (min-width: $screen-md-min) {
     display: block;
   }
 }

@@ -85,6 +85,7 @@ export default {
   },
   methods: {
     setShowCompanyInfo() {
+      console.log('this.isMobile', this.isMobile)
       if (this.isMobile) {
         this.isShowCompanyInfo = !this.isShowCompanyInfo;
       }
@@ -104,10 +105,8 @@ export default {
     window.removeEventListener("resize", this.checkViewPort(window.innerWidth));
   },
   mounted() {
+    console.log(window.innerWidth)
     window.innerWidth > 768 ? (this.isMobile = false) : (this.isMobile = true);
-    window.innerWidth > 768
-      ? (this.isShowCompanyInfo = true)
-      : (this.isMobile = false);
   },
 };
 </script>
@@ -233,11 +232,11 @@ address {
     position: relative;
     padding: 0 16px 0 0;
     border: none;
+    background-color: transparent;
     font-size: 15px;
     font-weight: bold;
     font-style: normal;
     color: #313842;
-    background-color: transparent;
 
     @media screen and (min-width: $screen-sm-min) {
       font-size: 18px;

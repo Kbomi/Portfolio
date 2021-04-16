@@ -17,7 +17,9 @@
           <ul class="prd-list">
             <li v-for="(item, index) in todayPrdList" :key="index">
               <a href="/">
-                <div class="thumbnail">
+                <div class="thumbnail"
+                  :style="{backgroundImage: 'url('+ item.thumbImage +')'}"
+                >
                   <span class="index">{{ index + 1 }}</span>
                 </div>
                 <div class="desc">
@@ -42,10 +44,12 @@
               <li><button>뷰티</button></li>
             </ul>
           </div>
-          <ul class="prd-list">
+          <ul class="prd-list slide-prd-list">
             <li v-for="(item, index) in todayPrdList" :key="index">
               <a href="/">
-                <div class="thumbnail">
+                <div class="thumbnail"
+                  :style="{backgroundImage: 'url('+ item.thumbImage +')'}"
+                >
                   <span class="index">{{ index + 1 }}</span>
                 </div>
                 <div class="desc">
@@ -60,8 +64,138 @@
             </li>
           </ul>
           <a href="/" class="btn btn-link"
-            ><span>트렌드 신상 </span>더보기 <i
+            ><span>브랜드 신상 </span>더보기 <i
           /></a>
+        </div>
+        <SubBanner />
+        <div class="main-prd-list for_you_prd">
+          <div class="list-title">
+            <h2>당신을 위한 추천</h2>
+          </div>
+          <ul class="prd-list slide-prd-list">
+            <li v-for="(item, index) in todayPrdList" :key="index">
+              <a href="/">
+                <div class="thumbnail"
+                  :style="{backgroundImage: 'url('+ item.thumbImage +')'}"
+                >
+                  <span class="index">{{ index + 1 }}</span>
+                </div>
+                <div class="desc">
+                  <p class="info-store">{{ item.store_name }}</p>
+                  <p class="info-product">{{ item.product_name }}</p>
+                  <div class="info-price">
+                    <span>{{ item.sale }}</span
+                    >{{ item.price }}
+                  </div>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="main-prd-list brandi_price">
+          <div class="list-title">
+            <h2>놓칠 수 없는 브랜디 특가</h2>
+          </div>
+          <ul class="prd-list slide-prd-list time-list">
+            <li v-for="(item, index) in todayPrdList" :key="index">
+              <a href="/">
+                <div class="thumbnail"
+                  :style="{backgroundImage: 'url('+ item.thumbImage +')'}"
+                >
+                  <span class="index percent">{{ index + 40 }}%</span>
+                </div>
+                <div class="desc">
+                  <p class="time">
+                    <span>남은시간</span>
+                    123:05:55
+                  </p>
+                  <p class="info-product">{{ item.product_name }}</p>
+                  <div class="info-price">{{ item.price }}</div>
+                </div>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="main-prd-list today">
+          <div class="list-title">
+            <h2><img src="/static/images/ic-haru-l.svg" alt="하루배송"/>상품은 내일 도착</h2>
+          </div>
+          <ul class="prd-list">
+            <li v-for="(item, index) in todayPrdList" :key="index">
+              <a href="/">
+                <div class="thumbnail"
+                  :style="{backgroundImage: 'url('+ item.thumbImage +')'}"
+                >
+                  <span class="index">{{ index + 1 }}</span>
+                </div>
+                <div class="desc">
+                  <p class="info-store">{{ item.store_name }}</p>
+                  <p class="info-product">{{ item.product_name }}</p>
+                  <div class="info-price">
+                    <span>{{ item.sale }}</span
+                    >{{ item.price }}
+                  </div>
+                </div>
+              </a>
+            </li>
+          </ul>
+          <a href="/" class="btn btn-link"><span>하루배송 상품 </span>더보기 <i /></a>
+        </div>
+        <div class="main-prd-list hot">
+          <div class="list-title">
+            <h2>지금 뜨고 있는 기획전</h2>
+          </div>
+          <div class="list-contents">
+            <div class="contents left-contents">
+              <a href="#" class="contents-banner">
+                <img src="/static/images/main/eventImage1.jpeg" alt="4시세일 활용도 높은 무지셔츠" />
+              </a>
+              <ul class="prd-list normal-list">
+                <li v-for="(item, index) in eventList" :key="index">
+                  <a href="/">
+                    <div class="thumbnail"
+                      :style="{backgroundImage: 'url('+ item.thumbImage +')'}"
+                    >
+                      <span class="index">{{ index + 1 }}</span>
+                    </div>
+                    <div class="desc">
+                      <p class="info-store">{{ item.store_name }}</p>
+                      <p class="info-product">{{ item.product_name }}</p>
+                      <div class="info-price">
+                        <span>{{ item.sale }}</span
+                        >{{ item.price }}
+                      </div>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            <div class="contents right-contents">
+              <a href="#" class="contents-banner">
+                <img src="/static/images/main/eventImage2.jpeg" alt="셀럽마켓in브랜디" />
+              </a>
+              <ul class="prd-list normal-list">
+                <li v-for="(item, index) in eventList" :key="index">
+                  <a href="/">
+                    <div class="thumbnail"
+                      :style="{backgroundImage: 'url('+ item.thumbImage +')'}"
+                    >
+                      <span class="index">{{ index + 1 }}</span>
+                    </div>
+                    <div class="desc">
+                      <p class="info-store">{{ item.store_name }}</p>
+                      <p class="info-product">{{ item.product_name }}</p>
+                      <div class="info-price">
+                        <span>{{ item.sale }}</span
+                        >{{ item.price }}
+                      </div>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <a href="/" class="btn btn-link"><span>더 많은 기획전 </span>보러가기 <i /></a>
         </div>
       </div>
     </div>
@@ -72,19 +206,22 @@
 
 <script>
 import HeaderComponent from "../common/header/HeaderComponent";
-import BannerComponent from "../main/BannerComponent";
+import BannerComponent from "./BannerComponent";
+import SubBanner from './SubBanner'
 import FooterComponent from "../common/FooterComponent";
 export default {
   name: "Main",
   components: {
     HeaderComponent,
     BannerComponent,
+    SubBanner,
     FooterComponent,
   },
   data() {
     return {
       todayPrdList: [],
       showBtnTop: false,
+      eventList: []
     };
   },
   methods: {
@@ -103,11 +240,21 @@ export default {
     // 임시 데이터 넣기
     for (let i = 0; i < 8; i++) {
       this.todayPrdList.push({
+        thumbImage: '/static/images/main/thumb1.jpeg',
         store_name: `옷가게 ${i}`,
         product_name: `상품명 ${i}`,
         price: `5${i},000`,
         sale: "21%",
       });
+      if(i < 3) {
+        this.eventList.push({
+          thumbImage: '/static/images/main/eventImage3.jpeg',
+          store_name: `옷가게 ${i}`,
+          product_name: `상품명 ${i}`,
+          price: `5${i},000`,
+          sale: "21%",
+        })
+      }
     }
   },
   created() {
@@ -196,14 +343,23 @@ export default {
   }
 }
 .main-prd-list {
+  margin-top: 60px;
   padding: 0 16px;
 
-  @media screen and (min-width: $screen-sm-min) {
+  @media screen and (min-width: $screen-md-min) {
+    margin-top: 100px;
     padding: 0 32px;
   }
   @media screen and (min-width: $screen-lg-min) {
     max-width: 1200px;
     margin: auto;
+  }
+}
+.today_best_prd {
+  margin-top: 50px;
+
+  @media screen and (min-width: $screen-md-min) {
+    margin-top: 80px;
   }
 }
 .list-title {
@@ -216,20 +372,62 @@ export default {
     margin-bottom: 28px;
   }
 }
-.new_prd {
-  margin-top: 40px;
+.list-contents {
+  display: flex;
+  flex-direction: column;
 
-  @media screen and (min-width: $screen-sm-min) {
-    margin-top: 100px;
+  .contents {
+    margin-bottom: 24px;
+    border-bottom: 1px solid #ebeef2;
+
+    img {
+      width: 100%;
+      vertical-align: middle;
+    }
   }
-  .prd-list {
+}
+.contents-banner {
+  display: block;
+  position: relative;
+  font-size: 11px;
+  line-height: 24px;
+  text-align: center;
+  color: #fff;
+
+  &::before {
+    content: '바로가기';
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    width: 82px;
+    height: 24px;
+    background: rgba(0, 0, 0, 0.4) url('/static/images/ic-more-s@3x.png') no-repeat right 12px center;
+    background-size: 7px;
+  }
+}
+.today {
+  h2 {
+    display: flex;
+    justify-content: center;
+
+    img {
+      margin-right: 6px;
+    }
+  }
+}
+.prd-list {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -4px;
+
+  &.slide-prd-list {
     overflow-x: auto;
     overflow-y: hidden;
     display: block;
     width: calc(100% + 40px);
     height: 100%;
     margin: 0 -20px;
-    padding: 0 0 0 16px;
+    padding: 0 0 0 12px;
     white-space: nowrap;
 
     @media screen and (min-width: $screen-sm-min) {
@@ -239,13 +437,57 @@ export default {
 
     li {
       display: inline-block;
+      padding-bottom: 0;
     }
   }
-}
-.prd-list {
-  display: flex;
-  flex-wrap: wrap;
-  margin: 0 -4px;
+
+  &.time-list {
+    width: auto;
+    padding-left: 10px;
+
+    li {
+      padding: 0 6px;
+    }
+    .thumbnail .index.percent {
+      width: 50px;
+      height: 26px;
+      background: #ff365e;
+      font-size: 13px;
+      font-weight: bold;
+      line-height: 26px;
+      letter-spacing: normal;
+    }
+    .time {
+      margin-bottom: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #ebeef2;
+      font-size: 13px;
+      font-weight: bold;
+      text-align: center;
+      color: #202429;
+
+      span {
+        font-weight: normal;
+        color: #808893;
+      }
+    }
+    .info-product {
+      @include ellipsis();
+      text-align: center;
+    }
+    .info-price {
+      justify-content: center;
+      margin-top: 2px;
+    }
+  }
+
+  &.normal-list {
+    margin-top: 8px;
+    
+    li {
+      width: calc(100% / 3);
+    }
+  }
 
   li {
     width: 50%;
@@ -262,10 +504,9 @@ export default {
   .thumbnail {
     position: relative;
     padding-top: 110%;
-    @include backgroundImage(
-      $image:
-        "https://image.brandi.me/cproduct/2021/03/10/SB000000000022162865_1615361259_image1_S.jpeg"
-    );
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
     .index {
       position: absolute;
       left: 0;
@@ -284,6 +525,7 @@ export default {
   }
   .desc {
     margin-top: 10px;
+    text-align: left;
   }
   .info-store {
     display: block;
