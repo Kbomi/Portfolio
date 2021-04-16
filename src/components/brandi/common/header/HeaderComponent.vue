@@ -342,10 +342,6 @@ nav {
     background: #fff;
   }
 
-  @media screen and (min-width: $screen-md-min) {
-    overflow: visible;
-  }
-
   ul {
     padding: 14px 6px;
     @media screen and (min-width: $screen-md-min) {

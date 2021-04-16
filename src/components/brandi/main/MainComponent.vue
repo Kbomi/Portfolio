@@ -35,7 +35,7 @@
           </ul>
           <a href="/" class="btn btn-link"><span>베스트 </span>더보기 <i /></a>
         </div>
-        <!-- <div class="main-prd-list new_prd">
+        <div class="main-prd-list new_prd">
           <div class="list-title">
             <h2>신상 모아보기</h2>
             <ul class="tab-list">
@@ -66,9 +66,9 @@
           <a href="/" class="btn btn-link"
             ><span>브랜드 신상 </span>더보기 <i
           /></a>
-        </div> -->
+        </div>
         <SubBanner />
-        <!-- <div class="main-prd-list for_you_prd">
+        <div class="main-prd-list for_you_prd">
           <div class="list-title">
             <h2>당신을 위한 추천</h2>
           </div>
@@ -98,8 +98,8 @@
             <button class="swiper-button swiper-button-prev">이전</button>
             <button class="swiper-button swiper-button-next">다음</button>
           </div>
-        </div> -->
-        <!-- <div class="main-prd-list brandi_price">
+        </div>
+        <div class="main-prd-list brandi_price">
           <div class="list-title">
             <h2>놓칠 수 없는 브랜디 특가</h2>
           </div>
@@ -132,7 +132,7 @@
               </div>
             </div>
           </div>
-        </div> -->
+        </div>
         <div class="main-prd-list today">
           <div class="list-title">
             <h2><img src="/static/images/ic-haru-l.svg" alt="하루배송"/>상품은 내일 도착</h2>
@@ -269,17 +269,29 @@ export default {
       }
     },
     initPriceSlide() {
-      this.brandiPriceSlide = new Swiper('.brandi_price .swiper-container', {
-        slidesPerView: 3,
-        navigation: {
-          nextEl: ".swiper-button-next",
-          prevEl: ".swiper-button-prev",
-        },
-        pagination: {
-          el: ".swiper-pagination > div",
-          type: "fraction",
-        },
-      })
+      if(this.isMobile) {
+        console.log('destroy')
+        this.brandiPriceSlide.destroy()
+      } else {
+        console.log('Swiper')
+        this.brandiPriceSlide = new Swiper('.brandi_price .swiper-container', {
+          slidesPerView: 'auto',
+          spaceBetween : 40,
+          autoHeight : true,
+          freeMode : true,
+          slidesOffsetBefore : 16,
+          slidesOffsetAfter : 16,
+          autoHeight: true,
+          navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+          },
+          pagination: {
+            el: ".swiper-pagination > div",
+            type: "fraction",
+          },
+        })
+      }
     }
   },
   mounted() {
@@ -303,9 +315,6 @@ export default {
       }
     }
     this.checkViewPort();
-    if(window.innerWidth > 768) {
-      this.initPriceSlide()
-    }
   },
   created() {
     window.addEventListener("scroll", this.setSowBtnTop);
@@ -316,11 +325,8 @@ export default {
     window.removeEventListener("resize", this.checkViewPort)
   },
   watch: {
-    isMobile: function(value) {
-      console.log('value:', value)
-      if(!value) {
-        this.initPriceSlide()
-      }
+    isMobile: function() {
+      this.initPriceSlide()
     }
   }
 };
@@ -534,34 +540,39 @@ export default {
   &.slide-prd-list {
     overflow-x: auto;
     overflow-y: hidden;
-    display: flex;
-    flex-wrap: nowrap;
-    width: 100%;
+    display: block;
+    width: calc(100% + 40px);
+    height: 100%;
     margin: 0 -20px;
+    padding: 0 0 0 16px;
+    white-space: nowrap;
 
     @media screen and (min-width: $screen-md-min) {
+      overflow: visible;
       display: flex;
       flex-wrap: wrap;
       width: calc(100% + 16px);
+      height: 100%;
       margin: 0 -8px;
       padding: 0;
     }
     
     li {
-      width: calc(100% + 40px);
-      padding-bottom: 0;
+      display: inline-block;
 
-      @media screen and (min-width: $screen-md-min) {
-        padding-bottom: 50px;
-      }
+      // @media screen and (min-width: $screen-md-min) {
+      //   padding-bottom: 50px;
+      // }
     }
   }
 
   &.time-list {
+    flex-wrap: nowrap;
     width: auto;
     padding-left: 10px;
 
     @media screen and (min-width: $screen-md-min) {
+      margin-right: -40px;
       padding: 0;
     }
 
@@ -569,6 +580,8 @@ export default {
       padding: 0 6px;
 
       @media screen and (min-width: $screen-md-min) {
+        width: calc((100% / 3) - 40px);
+        padding: 0;
       }
     }
     a {
@@ -593,6 +606,12 @@ export default {
       font-weight: bold;
       text-align: center;
       color: #202429;
+
+      @media screen and (min-width: $screen-md-min) {
+        margin-bottom: 12px;
+        padding-bottom: 12px;
+        font-size: 15px;
+      }
 
       span {
         font-weight: normal;
@@ -662,6 +681,10 @@ export default {
   .desc {
     margin-top: 10px;
     text-align: left;
+
+    @media screen and (min-width: $screen-md-min) {
+      margin-top: 12px;
+    }
   }
   .info-store {
     display: block;
