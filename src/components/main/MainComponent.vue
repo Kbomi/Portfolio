@@ -1,7 +1,7 @@
 <template>
   <div id="main">
     <img src="../../assets/logo.png">
-    <h1>Vue.js Project</h1>
+    <h1>보미 포트폴리오 -ing</h1>
     <h2>연습</h2>
     <ul>
       <li>
@@ -103,6 +103,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+#main {
+  text-align: center;
+}
 h1, h2 {
   font-weight: normal;
 }
