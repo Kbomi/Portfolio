@@ -37,12 +37,10 @@
 
 <script>
 const swiperOption = {
-  slidesPerView: 1.2,
-  autoHeight: true,
-  spaceBetween: 0,
-  loop: true,
-  loopAdditionalSlides: 1,
-  centeredSlides: true,
+  slidesPerView: 'auto',
+  autoHeight : true,
+  loop : true,
+  centeredSlides : true,
   navigation: {
     nextEl: ".swiper-button-next",
     prevEl: ".swiper-button-prev",
@@ -60,7 +58,7 @@ const swiperOption = {
       slidesPerView: 1,
       navigation: false,
     },
-  },
+  }
 };
 
 export default {
@@ -98,16 +96,19 @@ export default {
   font-size: 20px;
 
   @media screen and (min-width: $screen-md-min) {
+    max-width: 83.333%;
     margin-bottom: 80px;
+    overflow: visible;
+  }
+
+  @media screen and (min-width: $screen-lg-min) {
+    max-width: 1000px;
   }
 }
 .swiper-slide {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
   @media screen and (min-width: $screen-md-min) {
     position: relative;
+
     &::before {
       content: "";
       position: absolute;
@@ -185,11 +186,11 @@ export default {
   }
 }
 .swiper-button-prev {
-  left: 6.5%;
+  left: -24px;
   background: url("/static/images/ic-arrow-l@3x.png") no-repeat center/180%;
 }
 .swiper-button-next {
-  right: 6.5%;
+  right: -24px;
   background: url("/static/images/ic-arrow-r@3x.png") no-repeat center/180%;
 }
 </style>
