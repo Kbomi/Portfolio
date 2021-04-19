@@ -334,6 +334,11 @@ h1 {
 nav {
   border-top: 1px solid #ebeef2;
 
+  @media screen and (min-width: $screen-md-min) {
+    position: relative;
+    overflow: visible;
+  }
+
   &.fixed {
     position: fixed;
     top: 0;
@@ -342,13 +347,17 @@ nav {
     background: #fff;
   }
 
-  ul {
+ul {  
     padding: 14px 6px;
     @media screen and (min-width: $screen-md-min) {
       position: static;
+      padding: 18px 20px;
+      overflow: visible;
+      transform: none !important;
+    }
+    @media screen and (min-width: $screen-lg-min) {
       max-width: 1200px;
       margin: auto;
-      padding: 18px 20px;
     }
   }
   li {
@@ -364,7 +373,7 @@ nav {
     }
   }
   a {
-    padding: 0 10px;
+    padding: 18px 10px;
     font-size: 15px;
     font-weight: bold;
     line-height: normal;
@@ -397,7 +406,7 @@ nav {
   }
 
   .menu-item {
-    display: none;
+    // display: none;
     flex-wrap: wrap;
     max-width: 1200px;
     margin: auto;
@@ -420,6 +429,8 @@ nav {
     a {
       display: block;
       margin-top: 8px;
+      padding-top: 0;
+      padding-bottom: 0;
       color: #737373;
       font-size: 16px;
       line-height: 1.4em;

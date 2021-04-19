@@ -332,6 +332,9 @@ export default {
 </script>
 
 <style lang='scss' scoped>
+#wrap {
+  overflow-x: hidden;
+}
 .main_prd {
   h2 {
     margin: 0 0 16px 0;
