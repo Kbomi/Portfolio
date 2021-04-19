@@ -36,7 +36,7 @@
 </template>
 
 <script>
-const swiperOption = {
+const swiperOptions = {
   slidesPerView: 'auto',
   autoHeight : true,
   loop : true,
@@ -59,8 +59,7 @@ const swiperOption = {
       navigation: false,
     },
   }
-};
-
+}
 export default {
   name: "MainBanner",
   data() {
@@ -75,17 +74,8 @@ export default {
     },
   },
   mounted() {
-    this.bannerSlide = new Swiper(".banner.swiper-container", swiperOption);
-  },
-  // watch: {
-  //   isAutoPlay: function (oldValue, newValue) {
-  //     if (oldValue) {
-  //       this.bannerSlide.autoplay.start();
-  //     } else {
-  //       this.bannerSlide.autoplay.stop();
-  //     }
-  //   },
-  // },
+    this.bannerSlide = new Swiper(".banner.swiper-container", swiperOptions);
+  }
 };
 </script>
 
@@ -96,18 +86,19 @@ export default {
   font-size: 20px;
 
   @media screen and (min-width: $screen-md-min) {
-    max-width: 83.333%;
+    width: 83.333%;
     margin-bottom: 80px;
     overflow: visible;
   }
 
   @media screen and (min-width: $screen-lg-min) {
-    max-width: 1000px;
+    width: 1000px;
   }
 }
 .swiper-slide {
   @media screen and (min-width: $screen-md-min) {
     position: relative;
+    width: 100% !important;
 
     &::before {
       content: "";
