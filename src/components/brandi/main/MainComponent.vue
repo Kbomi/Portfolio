@@ -3,8 +3,8 @@
     <HeaderComponent />
     <div id="container">
       <BannerComponent />
-      <div class="main_prd">
-        <div class="main-prd-list today_best_prd">
+      <div class="main-product">
+        <div class="main-product-list product-today-best">
           <div class="list-title">
             <h2>TODAY 베스트</h2>
             <ul class="tab-list">
@@ -14,7 +14,7 @@
               <li><button>뷰티</button></li>
             </ul>
           </div>
-          <ul class="prd-list">
+          <ul class="product-list">
             <li v-for="(item, index) in todayPrdList" :key="index">
               <a href="/">
                 <div class="thumbnail"
@@ -35,7 +35,7 @@
           </ul>
           <a href="/" class="btn btn-link"><span>베스트 </span>더보기 <i /></a>
         </div>
-        <div class="main-prd-list new_prd">
+        <div class="main-product-list product-new">
           <div class="list-title">
             <h2>신상 모아보기</h2>
             <ul class="tab-list">
@@ -44,7 +44,7 @@
               <li><button>뷰티</button></li>
             </ul>
           </div>
-          <ul class="prd-list slide-prd-list">
+          <ul class="product-list slide-product-list">
             <li v-for="(item, index) in todayPrdList" :key="index">
               <a href="/">
                 <div class="thumbnail"
@@ -68,11 +68,11 @@
           /></a>
         </div>
         <SubBanner />
-        <div class="main-prd-list for_you_prd">
+        <div class="main-product-list product-for-you">
           <div class="list-title">
             <h2>당신을 위한 추천</h2>
           </div>
-          <ul class="prd-list slide-prd-list">
+          <ul class="product-list slide-product-list">
             <li v-for="(item, index) in todayPrdList" :key="index">
               <a href="/">
                 <div class="thumbnail"
@@ -99,14 +99,14 @@
             <button class="swiper-button swiper-button-next">다음</button>
           </div>
         </div>
-        <div class="main-prd-list brandi_price">
+        <div class="main-product-list product-price">
           <div class="list-title">
             <h2>놓칠 수 없는 브랜디 특가</h2>
           </div>
-          <div class="brandi_price-inner">
+          <div class="product-price-inner">
             <img v-if="!isMobile" src="/static/images/brandi/img-specialprice@3x.png" alt="BRANDI TIME PRICE" />
             <div class="swiper-container">
-              <ul class="prd-list slide-prd-list time-list swiper-wrapper">
+              <ul class="product-list slide-product-list time-list swiper-wrapper">
                 <li v-for="(item, index) in todayPrdList" :key="index" class="swiper-slide">
                   <a href="#">
                     <div class="thumbnail"
@@ -133,11 +133,11 @@
             </div>
           </div>
         </div>
-        <div class="main-prd-list today">
+        <div class="main-product-list product-today">
           <div class="list-title">
             <h2><img src="/static/images/brandi/ic-haru-l.svg" alt="하루배송"/>상품은 내일 도착</h2>
           </div>
-          <ul class="prd-list">
+          <ul class="product-list">
             <li v-for="(item, index) in todayPrdList" :key="index">
               <a href="/">
                 <div class="thumbnail"
@@ -158,7 +158,7 @@
           </ul>
           <a href="/" class="btn btn-link"><span>하루배송 상품 </span>더보기 <i /></a>
         </div>
-        <div class="main-prd-list hot">
+        <div class="main-product-list product-hot">
           <div class="list-title">
             <h2>지금 뜨고 있는 기획전</h2>
           </div>
@@ -167,7 +167,7 @@
               <a href="#" class="contents-banner">
                 <img src="/static/images/brandi/main/eventImage1.jpeg" alt="4시세일 활용도 높은 무지셔츠" />
               </a>
-              <ul class="prd-list normal-list">
+              <ul class="product-list normal-list">
                 <li v-for="(item, index) in eventList" :key="index">
                   <a href="/">
                     <div class="thumbnail"
@@ -191,7 +191,7 @@
               <a href="#" class="contents-banner">
                 <img src="/static/images/brandi/main/eventImage2.jpeg" alt="셀럽마켓in브랜디" />
               </a>
-              <ul class="prd-list normal-list">
+              <ul class="product-list normal-list">
                 <li v-for="(item, index) in eventList" :key="index">
                   <a href="/">
                     <div class="thumbnail"
@@ -269,7 +269,7 @@ export default {
       }
     },
     initPriceSlide() {
-      this.brandiPriceSlide = new Swiper('.brandi_price .swiper-container', {
+      this.brandiPriceSlide = new Swiper('.product-price .swiper-container', {
         slidesPerView: 'auto',
         autoplay: true,
         autoHeight : true,
@@ -334,7 +334,7 @@ export default {
 #wrap {
   overflow-x: hidden;
 }
-.main_prd {
+.main-product {
   h2 {
     margin: 0 0 16px 0;
     font-size: 20px;
@@ -415,7 +415,7 @@ export default {
     }
   }
 }
-.main-prd-list {
+.main-product-list {
   width: 100%;
   overflow: hidden;
   margin-top: 60px;
@@ -433,14 +433,14 @@ export default {
     margin-left: auto;
   }
 }
-.today_best_prd {
+.product-today-best {
   margin-top: 50px;
 
   @media screen and (min-width: $screen-md-min) {
     margin-top: 80px;
   }
 }
-.brandi_price {
+.product-price {
   @media screen and (min-width: $screen-md-min) {
     position: relative;
   }
@@ -529,7 +529,7 @@ export default {
     }
   }
 }
-.prd-list {
+.product-list {
   display: flex;
   flex-wrap: wrap;
   margin: 0 -4px;
@@ -538,7 +538,7 @@ export default {
     margin: 0 -8px;
   }
 
-  &.slide-prd-list {
+  &.slide-product-list {
     overflow-x: auto;
     overflow-y: hidden;
     display: block;
