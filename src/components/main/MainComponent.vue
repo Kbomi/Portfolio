@@ -58,7 +58,7 @@ export default {
     width: 100vw;
     height: calc(60vh - 40px);
     border-radius: 50%;
-    background: rgba(149, 225, 211, .8);
+    background: rgba(110, 191, 188, .8);
     transform: translateX(-50%);
     transform-origin: left;
     z-index: -1;
@@ -72,7 +72,7 @@ export default {
     width: 95vw;
     height: 56vh;
     border-radius: 50%;
-    background: rgba(252, 227, 138, .7);
+    background: rgba(130, 224, 99, .6);
     transform: translateX(30%);
     z-index: -1;
   }
