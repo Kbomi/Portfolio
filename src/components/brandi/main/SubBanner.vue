@@ -3,13 +3,13 @@
     <div class="swiper-wrapper">
       <div class="swiper-slide">
         <img
-          src="/static/images/main/subBanner/subBanner1.jpeg"
+          src="/static/images/brandi/main/subBanner/subBanner1.jpeg"
           alt="#홈데코#팬시#핸드메이드 내 집을 나답게"
         />
       </div>
       <div class="swiper-slide">
         <img
-          src="/static/images/main/subBanner/subBanner2.jpeg"
+          src="/static/images/brandi/main/subBanner/subBanner2.jpeg"
           alt="인기스토어 할인쿠폰 받을사람? 지금 받으러가기"
         />
       </div>

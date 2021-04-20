@@ -2,7 +2,7 @@
 /* checkbox common style */
 .lb-chk {
   * {
-    font-family: map-get($TEXT_FONT_STACK-latest, 'ko');
+    font-family: map-get($TEXT_FONT_STACK, 'ko');
   }
   label {
     display: inline-block;
@@ -47,7 +47,7 @@
 /* input common style */
 .input-wrap {
   * {
-    font-family: map-get($TEXT_FONT_STACK-latest, 'ko');
+    font-family: map-get($TEXT_FONT_STACK, 'ko');
   }
   input {
     &[type="text"],
@@ -90,7 +90,7 @@
   display: flex;
   flex-wrap: nowrap;
   * {
-    font-family: map-get($TEXT_FONT_STACK-latest, 'ko');
+    font-family: map-get($TEXT_FONT_STACK, 'ko');
   }
   + .flex-form {
     margin-top: 8px;
