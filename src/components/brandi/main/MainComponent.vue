@@ -5,15 +5,7 @@
       <BannerComponent />
       <div class="main-product">
         <div class="main-product-list product-today-best">
-          <div class="list-title">
-            <h2>TODAY 베스트</h2>
-            <ul class="tab-list">
-              <li><button class="active">전체</button></li>
-              <li><button>트렌드</button></li>
-              <li><button>브랜드</button></li>
-              <li><button>뷰티</button></li>
-            </ul>
-          </div>
+          <ListTitle :title="'TODAY 베스트'" :tabs="['전체', '트렌드', '브랜드', '뷰티']" />
           <ul class="product-list">
             <li v-for="(item, index) in todayPrdList" :key="index">
               <a href="/">
@@ -36,14 +28,7 @@
           <a href="/" class="btn btn-link"><span>베스트 </span>더보기 <i /></a>
         </div>
         <div class="main-product-list product-new">
-          <div class="list-title">
-            <h2>신상 모아보기</h2>
-            <ul class="tab-list">
-              <li><button class="active">트렌드</button></li>
-              <li><button>브랜드</button></li>
-              <li><button>뷰티</button></li>
-            </ul>
-          </div>
+          <ListTitle :title="'신상 모아보기'" :tabs="['트렌드', '브랜드', '뷰티']" />
           <ul class="product-list slide-product-list">
             <li v-for="(item, index) in todayPrdList" :key="index">
               <a href="/">
@@ -69,9 +54,7 @@
         </div>
         <SubBanner />
         <div class="main-product-list product-for-you">
-          <div class="list-title">
-            <h2>당신을 위한 추천</h2>
-          </div>
+          <ListTitle :title="'당신을 위한 추천'" :tabs="[]" />
           <ul class="product-list slide-product-list">
             <li v-for="(item, index) in todayPrdList" :key="index">
               <a href="/">
@@ -100,9 +83,7 @@
           </div>
         </div>
         <div class="main-product-list product-price">
-          <div class="list-title">
-            <h2>놓칠 수 없는 브랜디 특가</h2>
-          </div>
+          <ListTitle :title="'놓칠 수 없는 브랜디 특가'" :tabs="[]" />
           <div class="product-price-inner">
             <img v-if="!isMobile" src="/static/images/brandi/img-specialprice@3x.png" alt="BRANDI TIME PRICE" />
             <div class="swiper-container">
@@ -159,9 +140,7 @@
           <a href="/" class="btn btn-link"><span>하루배송 상품 </span>더보기 <i /></a>
         </div>
         <div class="main-product-list product-hot">
-          <div class="list-title">
-            <h2>지금 뜨고 있는 기획전</h2>
-          </div>
+          <ListTitle :title="'지금 뜨고 있는 기획전'" :tabs="[]" />
           <div class="list-contents">
             <div class="contents left-contents">
               <a href="#" class="contents-banner">
@@ -231,6 +210,7 @@
 <script>
 import HeaderComponent from "../common/header/HeaderComponent";
 import BannerComponent from "./BannerComponent";
+import ListTitle from './product-list/listTitle'
 import SubBanner from './SubBanner'
 import FooterComponent from "../common/FooterComponent";
 export default {
@@ -238,8 +218,9 @@ export default {
   components: {
     HeaderComponent,
     BannerComponent,
+    ListTitle,
     SubBanner,
-    FooterComponent,
+    FooterComponent
   },
   data() {
     return {
@@ -335,54 +316,6 @@ export default {
   overflow-x: hidden;
 }
 .main-product {
-  h2 {
-    margin: 0 0 16px 0;
-    font-size: 20px;
-    font-weight: bold;
-    text-align: center;
-    line-height: normal;
-    letter-spacing: normal;
-    word-break: break-word;
-    color: #202429;
-
-    @media screen and (min-width: $screen-md-min) {
-      font-size: 32px;
-      margin: 0;
-    }
-  }
-  .tab-list {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 12px;
-
-    @media screen and (min-width: $screen-md-min) {
-      margin: 0;
-      font-size: 17px;
-    }
-
-    li:not(:first-child) {
-      margin-left: 5px;
-
-      @media screen and (min-width: $screen-md-min) {
-        margin-left: 32px;
-      }
-    }
-
-    button {
-      display: block;
-      padding: 0 4px 4px;
-      background: transparent;
-      border: none;
-      font-size: 14px;
-      color: #808893;
-
-      &.active {
-        border-bottom: 2px solid #ff204b;
-        font-weight: 700;
-        color: #ff204b;
-      }
-    }
-  }
   .btn-link {
     display: block;
     max-width: 240px;
@@ -463,16 +396,6 @@ export default {
       width: 100%;
       max-width: calc(100% - 320px - 40px);
     }
-  }
-}
-.list-title {
-  display: flex;
-  flex-direction: column;
-  @media screen and (min-width: $screen-md-min) {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 28px;
   }
 }
 .list-contents {
