@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import MainComponent from '@/components/main/MainComponent'
 import BrandiComponent from '@/components/brandi/main/MainComponent'
+import NotFound from '@/components/common/NotFoundErrorComponent'
 
 Vue.use(Router)
 
@@ -29,6 +30,15 @@ const router =  new Router({
           {description: '브랜디 메인 퍼블리싱'}
         ]
       }
+    },
+    {
+      path: '/404',
+      name: 'NotFound',
+      component: NotFound
+    },
+    {
+      path: '*',
+      redirect: to => { return {'name': 'NotFound'} }
     }
   ]
 })
