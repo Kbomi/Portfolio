@@ -448,6 +448,8 @@ ul {
   bottom: 0;
   left: 0;
   width: 100%;
+  padding-bottom: constant(safe-area-inset-bottom); /* iOS 11.0 */
+  padding-bottom: env(safe-area-inset-bottom); /* iOS 11.2 */ 
   border-top: 1px solid #bcbcbd;
   background: #fff;
   z-index: 999;
