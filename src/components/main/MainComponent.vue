@@ -21,66 +21,10 @@
         </li>
         <li>
           <a
-            href="https://forum.vuejs.org"
-            target="_blank"
-          >
-            Forum
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://chat.vuejs.org"
-            target="_blank"
-          >
-            Community Chat
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://twitter.com/vuejs"
-            target="_blank"
-          >
-            Twitter
-          </a>
-        </li>
-        <li>
-          <a
-            href="http://vuejs-templates.github.io/webpack/"
-            target="_blank"
-          >
-            Docs for This Template
-          </a>
-        </li>
-        <li>
-          <a
             href="http://router.vuejs.org/"
             target="_blank"
           >
             vue-router
-          </a>
-        </li>
-        <li>
-          <a
-            href="http://vuex.vuejs.org/"
-            target="_blank"
-          >
-            vuex
-          </a>
-        </li>
-        <li>
-          <a
-            href="http://vue-loader.vuejs.org/"
-            target="_blank"
-          >
-            vue-loader
-          </a>
-        </li>
-        <li>
-          <a
-            href="https://github.com/vuejs/awesome-vue"
-            target="_blank"
-          >
-            awesome-vue
           </a>
         </li>
       </ul>
@@ -144,5 +88,37 @@ h2 {
 }
 ul {
   margin: 10px 0 20px;
+}
+li {
+  margin: 5px 0;
+}
+a {
+  padding: 5px 0;
+  color: $PRIMARY_COLOR;
+}
+
+@media screen and (min-width:$screen-md-min) {
+  #main {
+    &::before{
+      width: 50vw;
+      height: 60vh;
+    }
+  }
+  .container {
+    padding: 0 30px;
+  }
+  ul {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+    max-width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  li {
+    width: 50%;
+  }
 }
 </style>
