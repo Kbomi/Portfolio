@@ -3,19 +3,19 @@
     <div class="swiper-wrapper">
       <div class="swiper-slide">
         <img
-          src="/static/images/main/banner/mainBanner1.jpeg"
+          src="/static/images/brandi/main/banner/mainBanner1.jpeg"
           alt="집콕 아이템 특가"
         />
       </div>
       <div class="swiper-slide">
         <img
-          src="/static/images/main/banner/mainBanner2.jpeg"
+          src="/static/images/brandi/main/banner/mainBanner2.jpeg"
           alt="바닐라슈 단독 초특가"
         />
       </div>
       <div class="swiper-slide">
         <img
-          src="/static/images/main/banner/mainBanner3.jpeg"
+          src="/static/images/brandi/main/banner/mainBanner3.jpeg"
           alt="4월 할인 챙기세요"
         />
       </div>
@@ -129,7 +129,7 @@ export default {
     height: 24px;
     margin-right: 4px;
     @include backgroundImage(
-      $image: "/static/images/ic-stop-m@3x.png",
+      $image: "/static/images/brandi/ic-stop-m@3x.png",
       $size: 12px
     );
     border: none;
@@ -145,7 +145,7 @@ export default {
     }
 
     &.play {
-      background-image: url("/static/images/ic-play-m@3x.png");
+      background-image: url("/static/images/brandi/ic-play-m@3x.png");
     }
   }
 }
@@ -178,10 +178,10 @@ export default {
 }
 .swiper-button-prev {
   left: -24px;
-  background: url("/static/images/ic-arrow-l@3x.png") no-repeat center/180%;
+  background: url("/static/images/brandi/ic-arrow-l@3x.png") no-repeat center/180%;
 }
 .swiper-button-next {
   right: -24px;
-  background: url("/static/images/ic-arrow-r@3x.png") no-repeat center/180%;
+  background: url("/static/images/brandi/ic-arrow-r@3x.png") no-repeat center/180%;
 }
 </style>

@@ -104,7 +104,7 @@
             <h2>놓칠 수 없는 브랜디 특가</h2>
           </div>
           <div class="brandi_price-inner">
-            <img v-if="!isMobile" src="/static/images/img-specialprice@3x.png" alt="BRANDI TIME PRICE" />
+            <img v-if="!isMobile" src="/static/images/brandi/img-specialprice@3x.png" alt="BRANDI TIME PRICE" />
             <div class="swiper-container">
               <ul class="prd-list slide-prd-list time-list swiper-wrapper">
                 <li v-for="(item, index) in todayPrdList" :key="index" class="swiper-slide">
@@ -135,7 +135,7 @@
         </div>
         <div class="main-prd-list today">
           <div class="list-title">
-            <h2><img src="/static/images/ic-haru-l.svg" alt="하루배송"/>상품은 내일 도착</h2>
+            <h2><img src="/static/images/brandi/ic-haru-l.svg" alt="하루배송"/>상품은 내일 도착</h2>
           </div>
           <ul class="prd-list">
             <li v-for="(item, index) in todayPrdList" :key="index">
@@ -165,7 +165,7 @@
           <div class="list-contents">
             <div class="contents left-contents">
               <a href="#" class="contents-banner">
-                <img src="/static/images/main/eventImage1.jpeg" alt="4시세일 활용도 높은 무지셔츠" />
+                <img src="/static/images/brandi/main/eventImage1.jpeg" alt="4시세일 활용도 높은 무지셔츠" />
               </a>
               <ul class="prd-list normal-list">
                 <li v-for="(item, index) in eventList" :key="index">
@@ -189,7 +189,7 @@
             </div>
             <div class="contents right-contents">
               <a href="#" class="contents-banner">
-                <img src="/static/images/main/eventImage2.jpeg" alt="셀럽마켓in브랜디" />
+                <img src="/static/images/brandi/main/eventImage2.jpeg" alt="셀럽마켓in브랜디" />
               </a>
               <ul class="prd-list normal-list">
                 <li v-for="(item, index) in eventList" :key="index">
@@ -292,7 +292,7 @@ export default {
     // 임시 데이터 넣기
     for (let i = 0; i < 8; i++) {
       this.todayPrdList.push({
-        thumbImage: '/static/images/main/thumb1.jpeg',
+        thumbImage: '/static/images/brandi/main/thumb1.jpeg',
         store_name: `옷가게 ${i}`,
         product_name: `상품명 ${i}`,
         price: `5${i},000`,
@@ -300,7 +300,7 @@ export default {
       });
       if(i < 3) {
         this.eventList.push({
-          thumbImage: '/static/images/main/eventImage3.jpeg',
+          thumbImage: '/static/images/brandi/main/eventImage3.jpeg',
           store_name: `옷가게 ${i}`,
           product_name: `상품명 ${i}`,
           price: `5${i},000`,
@@ -408,7 +408,7 @@ export default {
       width: 13px;
       height: 13px;
       @include backgroundImage(
-        $image: "/static/images/ic-btn-more-m@3x.png",
+        $image: "/static/images/brandi/ic-btn-more-m@3x.png",
         $size: 100%
       );
       vertical-align: middle;
@@ -515,7 +515,7 @@ export default {
     bottom: 0;
     width: 82px;
     height: 24px;
-    background: rgba(0, 0, 0, 0.4) url('/static/images/ic-more-s@3x.png') no-repeat right 12px center;
+    background: rgba(0, 0, 0, 0.4) url('/static/images/brandi/ic-more-s@3x.png') no-repeat right 12px center;
     background-size: 7px;
   }
 }
@@ -674,7 +674,7 @@ export default {
       text-align: center;
       color: #fff;
       z-index: 2;
-      @include backgroundImage($image: "/static/images/ic-bg-flag@3x.png");
+      @include backgroundImage($image: "/static/images/brandi/ic-bg-flag@3x.png");
     }
   }
   .desc {
@@ -746,7 +746,7 @@ export default {
   height: 42px;
   text-indent: -999px;
   overflow: hidden;
-  @include backgroundImage($image: "/static/images/ic-top-r.svg");
+  @include backgroundImage($image: "/static/images/brandi/ic-top-r.svg");
   background-color: transparent;
   border: none;
   z-index: 998;
@@ -785,9 +785,9 @@ export default {
   overflow: hidden;
 }
 .swiper-button-prev {
-  background-image: url('/static/images/ic-square-arrow-l-s@3x.png');
+  background-image: url('/static/images/brandi/ic-square-arrow-l-s@3x.png');
 }
 .swiper-button-next {
-  background-image: url('/static/images/ic-square-arrow-r-s@3x.png');
+  background-image: url('/static/images/brandi/ic-square-arrow-r-s@3x.png');
 }
 </style>

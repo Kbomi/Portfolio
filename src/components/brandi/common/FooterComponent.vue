@@ -211,16 +211,16 @@ footer {
     }
   }
   .item-faq {
-    background-image: url("/static/images/footer/ic-faq-32.svg");
+    background-image: url("/static/images/brandi/footer/ic-faq-32.svg");
   }
   .item-kakao {
-    background-image: url("/static/images/footer/ic-kakaoplus-rogo-32.svg");
+    background-image: url("/static/images/brandi/footer/ic-kakaoplus-rogo-32.svg");
   }
   .item-facebook {
-    background-image: url("/static/images/footer/ic-facebook-rogo-32.svg");
+    background-image: url("/static/images/brandi/footer/ic-facebook-rogo-32.svg");
   }
   .item-instagram {
-    background-image: url("/static/images/footer/ic-insta-rogo-32.svg");
+    background-image: url("/static/images/brandi/footer/ic-insta-rogo-32.svg");
   }
 }
 address {
@@ -274,7 +274,7 @@ address {
       right: 0;
       width: 12px;
       height: 12px;
-      background: url('/static/images/footer/ic-more-down-m.svg') no-repeat center;
+      background: url('/static/images/brandi/footer/ic-more-down-m.svg') no-repeat center;
       transform: translateY(-50%);
 
       @media screen and (min-width: $screen-md-min) {

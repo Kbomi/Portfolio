@@ -4,7 +4,7 @@
  @mixin font-style() {
   color: $TEXT_COLOR;
   font-weight:normal;
-  font-size:13px;
+  font-size:14px;
   -webkit-text-size-adjust: none;
   font-family: map-get($TEXT_FONT_STACK, 'ko');
   word-break: keep-all;
@@ -18,9 +18,9 @@
     @include font-style();
   }
 }
-@media screen and (max-width:768px) {
+@media screen and (min-width:$screen-md-min) {
   body{
-    font-size:14px;
+    font-size:16px;
   }
 }
 

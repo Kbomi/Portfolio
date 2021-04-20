@@ -18,9 +18,9 @@ export default {
   computed: {
     loadIamgeUrl: function() {
       if(this.isMobile) {
-        return '/static/images/header/banner/bannerImage_mo.jpeg'
+        return '/static/images/brandi/header/banner/bannerImage_mo.jpeg'
       } else {
-        return '/static/images/header/banner/bannerImage.jpeg'
+        return '/static/images/brandi/header/banner/bannerImage.jpeg'
       }
     }
   }

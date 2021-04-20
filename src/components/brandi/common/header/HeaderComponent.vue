@@ -213,7 +213,7 @@ h1 {
   width: 116px;
   height: 27px;
   margin: 0;
-  background: url("/static/images/header/ic-brandi-symbolrogo-xl.svg") no-repeat;
+  background: url("/static/images/brandi/header/ic-brandi-symbolrogo-xl.svg") no-repeat;
   background-size: cover;
   text-indent: -999px;
   overflow: hidden;
@@ -235,7 +235,7 @@ h1 {
   width: 48px;
   height: 48px;
   padding: 0;
-  background: transparent url("/static/images/header/ic-search-s.svg") no-repeat
+  background: transparent url("/static/images/brandi/header/ic-search-s.svg") no-repeat
     center;
   border: none;
   text-indent: -999px;
@@ -310,7 +310,7 @@ h1 {
   }
   .btn-cart {
     margin-left: -8px;
-    background-image: url("/static/images/header/ic-cart.svg");
+    background-image: url("/static/images/brandi/header/ic-cart.svg");
 
     @media screen and (min-width: $screen-md-min) {
       margin-left: 60px;
@@ -318,14 +318,14 @@ h1 {
   }
   .btn-favor {
     display: none;
-    background-image: url("/static/images/header/ic-favorite.svg");
+    background-image: url("/static/images/brandi/header/ic-favorite.svg");
     @media screen and (min-width: $screen-md-min) {
       display: block;
     }
   }
   .btn-mypage {
     display: none;
-    background-image: url("/static/images/header/ic-my.svg");
+    background-image: url("/static/images/brandi/header/ic-my.svg");
     @media screen and (min-width: $screen-md-min) {
       display: block;
     }
@@ -475,19 +475,19 @@ ul {
     overflow: hidden;
   }
   .tab-home {
-    background-image: url("/static/images/ic-gnb-aos-home-brandi-s@2x.png");
+    background-image: url("/static/images/brandi/ic-gnb-aos-home-brandi-s@2x.png");
   }
   .tab-oneday {
-    background-image: url("/static/images/ic-gnb-aos-haru-n@2x.png");
+    background-image: url("/static/images/brandi/ic-gnb-aos-haru-n@2x.png");
   }
   .tab-category {
-    background-image: url("/static/images/ic-gnb-aos-categoryline-n@2x.png");
+    background-image: url("/static/images/brandi/ic-gnb-aos-categoryline-n@2x.png");
   }
   .tab-favor {
-    background-image: url("/static/images/ic-gnb-aos-heart-n@2x.png");
+    background-image: url("/static/images/brandi/ic-gnb-aos-heart-n@2x.png");
   }
   .tab-my {
-    background-image: url("/static/images/ic-gnb-aos-my-n@2x.png");
+    background-image: url("/static/images/brandi/ic-gnb-aos-my-n@2x.png");
   }
 }
 </style>
