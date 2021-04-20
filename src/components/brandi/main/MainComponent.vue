@@ -286,7 +286,6 @@ export default {
           type: "fraction",
         },
       })
-      console.log('brandiPriceSlide:', this.brandiPriceSlide)
     }
   },
   mounted() {
