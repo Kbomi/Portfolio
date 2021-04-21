@@ -4,9 +4,9 @@
       <img v-if="imageSrc" :src="imageSrc" :alt="imageAlt"/>
       {{title}}
     </h2>
-    <ul v-if="tabs.length > 0" class="tab-list">
+    <ul v-if="tabs && tabs.length > 0" class="tab-list">
       <li v-for="(tab, index) in tabs" :key="index">
-        <button type="button" :class="{active: index === 0}">{{tab}}</button>
+        <button :class="{active: index === 0}">{{tab}}</button>
       </li>
     </ul>
   </div>
