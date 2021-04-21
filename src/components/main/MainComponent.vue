@@ -66,9 +66,17 @@ export default {
     const isMobile = window.innerWidth < 769 ? true : false
     console.log('isMobile:', isMobile)
     if(isMobile) {
-      window.addEventListener('deviceorientation', this.updateParticlePostion)
+      window.addEventListener('deviceorientation', this.updateParticlePostion, true)
     } else {
       this.$refs.main.addEventListener('mousemove', this.updateParticlePostion)
+    }
+  },
+  destroyed() {
+    const isMobile = window.innerWidth < 769 ? true : false
+    if(isMobile) {
+      window.removeEventListener('deviceorientation', this.updateParticlePostion, true)
+    } else {
+      this.$refs.main.removeEventListener('mousemove', this.updateParticlePostion)
     }
   }
 }
