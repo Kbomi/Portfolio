@@ -3,8 +3,8 @@
     <div class="swiper-pagination-fraction">
       <span class="swiper-pagination-current">{{currentPage}}</span> / <span class="swiper-pagination-total">{{totalPage}}</span>
     </div>
-    <button type="button" class="swiper-button swiper-button-prev" @click="prevPage">이전</button>
-    <button type="button" class="swiper-button swiper-button-next" @click="nextPage">다음</button>
+    <button :disabled="currentPage === 1" type="button" class="swiper-button swiper-button-prev" @click="prevPage">이전</button>
+    <button :disabled="currentPage === totalPage" type="button" class="swiper-button swiper-button-next" @click="nextPage">다음</button>
   </div>
 </template>
 
@@ -53,6 +53,11 @@ export default {
     background-size: cover;
     text-indent: -999px;
     overflow: hidden;
+
+    &:disabled {
+      opacity: .4;
+      cursor: not-allowed;
+    }
   }
   .swiper-button-prev {
     background-image: url('/static/images/brandi/ic-square-arrow-l-s@3x.png');
