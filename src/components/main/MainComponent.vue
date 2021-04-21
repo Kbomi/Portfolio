@@ -1,5 +1,7 @@
 <template>
-  <div id="main">
+  <div ref="main" id="main">
+    <div ref="particle1" id="particle1" :style="particle1Position" />
+    <div ref="particle2" id="particle2" :style="particle2Position" />
     <div class="container">
       <h1>Bomi</h1>
       <h2>연습</h2>
@@ -37,6 +39,36 @@ export default {
   name: 'Main',
   data () {
     return {
+      isMobile: true,
+      particle1Position: {left: '-200px', top: '-40px'},
+      particle2Position: {right: '-200px', bottom: '-40px'}
+    }
+  },
+  methods: {
+    updateParticlePostion(event) {
+      console.log('event:', event)
+      console.log('event.x:', event.x)
+      console.log('event.y:', event.y)
+      const particle1Ref = this.$refs.particle1.getBoundingClientRect()
+      const moveX = (event.x - particle1Ref.width / 3) / particle1Ref.width * -30
+      const moveY = (event.y - particle1Ref.height / 3) / particle1Ref.height * -30
+      this.particle1Position = {
+        left: -200 + parseInt(moveX) + 'px',
+        top: -40 + moveY + 'px'
+      }
+      this.particle2Position = {
+        right: -200 + parseInt(moveX) + 'px',
+        bottom: -40 + moveY + 'px'
+      }
+    }
+  },
+  mounted() {
+    const isMobile = window.innerWidth < 769 ? true : false
+    console.log('isMobile:', isMobile)
+    if(isMobile) {
+      window.addEventListener('deviceorientation', this.updateParticlePostion)
+    } else {
+      this.$refs.main.addEventListener('mousemove', this.updateParticlePostion)
     }
   }
 }
@@ -49,33 +81,23 @@ export default {
   min-height: 100vh;
   padding: 20px 0;
   overflow: hidden;
-
-  &::before {
-    position: absolute;
-    top: -40px;
-    left: 0;
-    content: '';
-    width: 100vw;
-    height: calc(60vh - 40px);
-    border-radius: 50%;
-    background: rgba(110, 191, 188, .8);
-    transform: translateX(-50%);
-    transform-origin: left;
-    z-index: -1;
-  }
-
-  &::after {
-    position: absolute;
-    bottom: -80px;
-    right: 0;
-    content: '';
-    width: 95vw;
-    height: 56vh;
-    border-radius: 50%;
-    background: rgba(130, 224, 99, .6);
-    transform: translateX(30%);
-    z-index: -1;
-  }
+}
+#particle1 {
+  position: absolute;
+  width: 100vw;
+  height: calc(60vh - 40px);
+  border-radius: 50%;
+  background: rgba(110, 191, 188, .8);
+  transform-origin: left;
+  z-index: -1;
+}
+#particle2 {
+  position: absolute;
+  width: 95vw;
+  height: calc(55vh - 50px);
+  border-radius: 50%;
+  background: rgba(130, 224, 99, .6);
+  z-index: -1;
 }
 .container {
   text-align: center;
@@ -101,15 +123,10 @@ a {
 }
 
 @media screen and (min-width:$screen-md-min) {
-  #main {
-    &::before{
-      width: 84vw;
-      transform: translateX(calc(-40% + 5vw));
-    }
-    &::after{
-      width: 80vw;
-      height: 60vh;
-    }
+  #particle1,
+  #particle2 {
+    width: 84vw;
+    width: 84vw;
   }
   .container {
     padding: 0 30px;
