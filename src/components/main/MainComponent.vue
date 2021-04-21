@@ -48,6 +48,7 @@ export default {
   position: relative;
   min-height: 100vh;
   padding: 20px 0;
+  overflow: hidden;
 
   &::before {
     position: absolute;
@@ -55,22 +56,24 @@ export default {
     left: 0;
     content: '';
     width: 100vw;
-    height: 60vh;
+    height: calc(60vh - 40px);
     border-radius: 50%;
-    background: rgba(149, 225, 211, .8);
+    background: rgba(110, 191, 188, .8);
     transform: translateX(-50%);
+    transform-origin: left;
     z-index: -1;
   }
 
   &::after {
     position: absolute;
-    bottom: -40px;
+    bottom: -80px;
     right: 0;
     content: '';
-    width: 90vw;
-    height: 40vh;
-    background: rgba(252, 227, 138, .7);
-    transform: translateX(20%);
+    width: 95vw;
+    height: 56vh;
+    border-radius: 50%;
+    background: rgba(130, 224, 99, .6);
+    transform: translateX(30%);
     z-index: -1;
   }
 }
@@ -100,7 +103,11 @@ a {
 @media screen and (min-width:$screen-md-min) {
   #main {
     &::before{
-      width: 50vw;
+      width: 84vw;
+      transform: translateX(calc(-40% + 5vw));
+    }
+    &::after{
+      width: 80vw;
       height: 60vh;
     }
   }

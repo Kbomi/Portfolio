@@ -12,5 +12,7 @@ export default {
 
 <style lang="scss">
 @import '~@/assets/scss/common';
-// #app {}
+#app {
+  overflow-x: hidden;
+}
 </style>
