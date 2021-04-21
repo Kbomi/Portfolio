@@ -30,8 +30,8 @@
       </button>
       <div />
     </div>
-    <button class="swiper-button swiper-button-prev">이전</button>
-    <button class="swiper-button swiper-button-next">다음</button>
+    <button type="button" class="swiper-button swiper-button-prev">이전</button>
+    <button type="button" class="swiper-button swiper-button-next">다음</button>
   </div>
 </template>
 

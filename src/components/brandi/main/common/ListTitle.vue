@@ -1,9 +1,12 @@
 <template>
   <div class="list-title">
-    <h2>{{title}}</h2>
+    <h2>
+      <img v-if="imageSrc" :src="imageSrc" :alt="imageAlt"/>
+      {{title}}
+    </h2>
     <ul v-if="tabs.length > 0" class="tab-list">
       <li v-for="(tab, index) in tabs" :key="index">
-        <button :class="{active: index === 0}">{{tab}}</button>
+        <button type="button" :class="{active: index === 0}">{{tab}}</button>
       </li>
     </ul>
   </div>
@@ -11,10 +14,12 @@
 
 <script>
 export default {
-  name: 'listTitle',
+  name: 'ListTitle',
   props: {
     title: String,
-    tabs: Array
+    tabs: Array,
+    imageSrc: String,
+    imageAlt: String
   }
 }
 </script>

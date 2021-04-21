@@ -7,13 +7,13 @@
       <div class="header-top-area-inner">
         <h1>BRANDI</h1>
         <div class="top-area-right">
-          <button v-if="isMobile" class="btn-search" @click="setShowSearchArea">
+          <button type="button" v-if="isMobile" class="btn-search" @click="setShowSearchArea">
             검색영역열기
           </button>
           <div :class="{ show: showSearchArea }" class="search-form">
             <div class="search-form-inner">
               <input ref="searchInput" type="text" v-model="keyword" @blur="searchInputBlur" />
-              <button ref="searchButton" class="btn-search" @click="submitSearch">검색</button>
+              <button type="button" ref="searchButton" class="btn-search" @click="submitSearch">검색</button>
             </div>
           </div>
           <div class="btn-wrap">

@@ -25,7 +25,7 @@
               </a>
             </li>
           </ul>
-          <a href="/" class="btn btn-link"><span>베스트 </span>더보기 <i /></a>
+          <LinkButton :hrefLink="'#'" :text="'베스트'" />
         </div>
         <div class="main-product-list product-new">
           <ListTitle :title="'신상 모아보기'" :tabs="['트렌드', '브랜드', '뷰티']" />
@@ -48,9 +48,7 @@
               </a>
             </li>
           </ul>
-          <a href="/" class="btn btn-link"
-            ><span>브랜드 신상 </span>더보기 <i
-          /></a>
+          <LinkButton :hrefLink="'#'" :text="'브랜드 신상'" />
         </div>
         <SubBanner />
         <div class="main-product-list product-for-you">
@@ -74,13 +72,7 @@
               </a>
             </li>
           </ul>
-          <div class="swiper-pagination">
-            <div class="swiper-pagination-fraction">
-              <span class="swiper-pagination-current">1</span> / <span class="swiper-pagination-total">6</span>
-            </div>
-            <button class="swiper-button swiper-button-prev">이전</button>
-            <button class="swiper-button swiper-button-next">다음</button>
-          </div>
+          <SlideButton :currentPage="1" :totalPage="6" :prevPage="prevPage" :nextPage="nextPage" />
         </div>
         <div class="main-product-list product-price">
           <ListTitle :title="'놓칠 수 없는 브랜디 특가'" :tabs="[]" />
@@ -106,18 +98,12 @@
                   </a>
                 </li>
               </ul>
-              <div class="swiper-pagination">
-                <div />
-                <button class="swiper-button swiper-button-prev">이전</button>
-                <button class="swiper-button swiper-button-next">다음</button>
-              </div>
+              <SlideButton :currentPage="1" :totalPage="6" :prevPage="prevPage" :nextPage="nextPage" />
             </div>
           </div>
         </div>
         <div class="main-product-list product-today">
-          <div class="list-title">
-            <h2><img src="/static/images/brandi/ic-haru-l.svg" alt="하루배송"/>상품은 내일 도착</h2>
-          </div>
+          <ListTitle :title="'상품은 내일 도착'" :tabs="[]" :imageSrc="'/static/images/brandi/ic-haru-l.svg'" :imageAlt="'하루배송'" />
           <ul class="product-list">
             <li v-for="(item, index) in todayPrdList" :key="index">
               <a href="/">
@@ -137,7 +123,7 @@
               </a>
             </li>
           </ul>
-          <a href="/" class="btn btn-link"><span>하루배송 상품 </span>더보기 <i /></a>
+          <LinkButton :hrefLink="'#'" :text="'하루배송 상품'" />
         </div>
         <div class="main-product-list product-hot">
           <ListTitle :title="'지금 뜨고 있는 기획전'" :tabs="[]" />
@@ -191,26 +177,22 @@
               </ul>
             </div>
           </div>
-          <a href="/" class="btn btn-link"><span>더 많은 기획전 </span>보러가기 <i /></a>
-          <div class="swiper-pagination">
-            <div class="swiper-pagination-fraction">
-              <span class="swiper-pagination-current">1</span> / <span class="swiper-pagination-total">6</span>
-            </div>
-            <button class="swiper-button swiper-button-prev">이전</button>
-            <button class="swiper-button swiper-button-next">다음</button>
-          </div>
+          <LinkButton :hrefLink="'#'" :text="'더 많은 기획전'" />
+          <SlideButton :currentPage="1" :totalPage="6" :prevPage="prevPage" :nextPage="nextPage" />
         </div>
       </div>
     </div>
     <FooterComponent />
-    <button v-if="showBtnTop" class="btn-top" @click="goTop">맨 위로</button>
+    <button type="button" v-if="showBtnTop" class="btn-top" @click="goTop">맨 위로</button>
   </div>
 </template>
 
 <script>
 import HeaderComponent from "../common/header/HeaderComponent";
 import BannerComponent from "./BannerComponent";
-import ListTitle from './product-list/listTitle'
+import ListTitle from './common/ListTitle'
+import LinkButton from './common/LinkButton'
+import SlideButton from './common/SlideButton'
 import SubBanner from './SubBanner'
 import FooterComponent from "../common/FooterComponent";
 export default {
@@ -219,6 +201,8 @@ export default {
     HeaderComponent,
     BannerComponent,
     ListTitle,
+    LinkButton,
+    SlideButton,
     SubBanner,
     FooterComponent
   },
@@ -267,6 +251,12 @@ export default {
           type: "fraction",
         },
       })
+    },
+    prevPage() {
+      window.alert('이전')
+    },
+    nextPage() {
+      window.alert('다음')
     }
   },
   mounted() {
@@ -314,39 +304,6 @@ export default {
 <style lang='scss' scoped>
 #wrap {
   overflow-x: hidden;
-}
-.main-product {
-  .btn-link {
-    display: block;
-    max-width: 240px;
-    margin: 0 auto 20px;
-    padding: 10.5px;
-    border: solid 1px #d3d7df;
-    border-radius: 28px;
-    font-size: 13px;
-    color: #5f6773;
-    text-align: center;
-
-    @media screen and (min-width: $screen-md-min) {
-      max-width: 320px;
-      margin-bottom: 0;
-      font-size: 14px;
-    }
-
-    span {
-      font-weight: bold;
-    }
-    i {
-      display: inline-block;
-      width: 13px;
-      height: 13px;
-      @include backgroundImage(
-        $image: "/static/images/brandi/ic-btn-more-m@3x.png",
-        $size: 100%
-      );
-      vertical-align: middle;
-    }
-  }
 }
 .main-product-list {
   width: 100%;
@@ -673,44 +630,5 @@ export default {
   background-color: transparent;
   border: none;
   z-index: 998;
-}
-// swiper pagination css
-.swiper-pagination {
-  display: none;
-  @media screen and (min-width: $screen-md-min) {
-    display: flex;
-    align-items: center;
-    position: absolute;
-    top: 0;
-    right: 20px;
-    z-index: 995;
-  }
-}
-.swiper-pagination-fraction {
-  margin-right: 12px;
-  font-size: 16px;
-  font-weight: normal;
-  line-height: normal;
-  letter-spacing: normal;
-  color: #808893;
-}
-.swiper-button {
-  position: static;
-  min-width: 40px;
-  height: 40px;
-  margin-top: 0;
-  border: none;
-  background-color: transparent;
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  text-indent: -999px;
-  overflow: hidden;
-}
-.swiper-button-prev {
-  background-image: url('/static/images/brandi/ic-square-arrow-l-s@3x.png');
-}
-.swiper-button-next {
-  background-image: url('/static/images/brandi/ic-square-arrow-r-s@3x.png');
 }
 </style>
