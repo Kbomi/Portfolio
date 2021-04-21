@@ -59,12 +59,14 @@
 <script>
 import ListTitle from './common/ListTitle'
 import SlideButton from './common/SlideButton'
+import LinkButton from './common/LinkButton'
 export default {
-  name: 'ListComponent',
+  name: 'EventList',
   props: {},
   components: {
     ListTitle,
-    SlideButton
+    SlideButton,
+    LinkButton
   },
   data() {
     return {
