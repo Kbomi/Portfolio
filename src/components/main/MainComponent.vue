@@ -4,8 +4,9 @@
     <div ref="particle2" id="particle2" :style="particle2Position" />
     <div class="container">
       <h1>Bomi</h1>
-      <p>{{particle1Position.left}}/{{particle1Position.top}}</p>
-      <p>{{particle2Position.right}}/{{particle2Position.bottom}}</p>
+      <p>{{eventData.alpha}}</p>
+      <p>{{eventData.beta}}</p>
+      <p>{{eventData.gamma}}</p>
       <h2>연습</h2>
       <ul>
         <li>
@@ -43,17 +44,28 @@ export default {
     return {
       isMobile: true,
       particle1Position: {left: '-200px', top: '-40px'},
-      particle2Position: {right: '-200px', bottom: '-40px'}
+      particle2Position: {right: '-200px', bottom: '-40px'},
+      eventData: {}
     }
   },
   methods: {
-    updateParticlePostion(event) {
-      console.log('event:', event)
-      console.log('event.x:', event.x)
-      console.log('event.y:', event.y)
+    mouseMoveParticlePosition(event) {
       const particle1Ref = this.$refs.particle1.getBoundingClientRect()
       const moveX = (event.x - particle1Ref.width / 3) / particle1Ref.width * -30
       const moveY = (event.y - particle1Ref.height / 3) / particle1Ref.height * -30
+      this.particle1Position = {
+        left: -200 + parseInt(moveX) + 'px',
+        top: -40 + parseInt(moveY) + 'px'
+      }
+      this.particle2Position = {
+        right: -200 + parseInt(moveX) + 'px',
+        bottom: -40 + parseInt(moveY) + 'px'
+      }
+    },
+    handleDeviceParticlePosition(event) {
+      this.eventData = event
+      const moveX = (event.beta - particle1Ref.width / 3) / particle1Ref.width * -30
+      const moveY = (event.gamma - particle1Ref.height / 3) / particle1Ref.height * -30
       this.particle1Position = {
         left: -200 + parseInt(moveX) + 'px',
         top: -40 + parseInt(moveY) + 'px'
@@ -66,19 +78,18 @@ export default {
   },
   mounted() {
     const isMobile = window.innerWidth < 769 ? true : false
-    console.log('isMobile:', isMobile)
     if(isMobile) {
-      window.addEventListener('deviceorientation', this.updateParticlePostion)
+      window.addEventListener('deviceorientation', this.handleDeviceParticlePosition)
     } else {
-      this.$refs.main.addEventListener('mousemove', this.updateParticlePostion)
+      this.$refs.main.addEventListener('mousemove', this.mouseMoveParticlePosition)
     }
   },
   destroyed() {
     const isMobile = window.innerWidth < 769 ? true : false
     if(isMobile) {
-      window.removeEventListener('deviceorientation', this.updateParticlePostion, true)
+      window.removeEventListener('deviceorientation', this.handleDeviceParticlePosition)
     } else {
-      this.$refs.main.removeEventListener('mousemove', this.updateParticlePostion)
+      this.$refs.main.removeEventListener('mousemove', this.mouseMoveParticlePosition)
     }
   }
 }
