@@ -4,6 +4,8 @@
     <div ref="particle2" id="particle2" :style="particle2Position" />
     <div class="container">
       <h1>Bomi</h1>
+      <p>{{particle1Position.left}}/{{particle1Position.top}}</p>
+      <p>{{particle2Position.right}}/{{particle2Position.bottom}}</p>
       <h2>연습</h2>
       <ul>
         <li>
@@ -54,11 +56,11 @@ export default {
       const moveY = (event.y - particle1Ref.height / 3) / particle1Ref.height * -30
       this.particle1Position = {
         left: -200 + parseInt(moveX) + 'px',
-        top: -40 + moveY + 'px'
+        top: -40 + parseInt(moveY) + 'px'
       }
       this.particle2Position = {
         right: -200 + parseInt(moveX) + 'px',
-        bottom: -40 + moveY + 'px'
+        bottom: -40 + parseInt(moveY) + 'px'
       }
     }
   },
@@ -66,7 +68,7 @@ export default {
     const isMobile = window.innerWidth < 769 ? true : false
     console.log('isMobile:', isMobile)
     if(isMobile) {
-      window.addEventListener('deviceorientation', this.updateParticlePostion, true)
+      window.addEventListener('deviceorientation', this.updateParticlePostion)
     } else {
       this.$refs.main.addEventListener('mousemove', this.updateParticlePostion)
     }
