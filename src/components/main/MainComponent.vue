@@ -74,12 +74,23 @@ export default {
         right: -200 + parseInt(moveX) + 'px',
         bottom: -40 + parseInt(moveY) + 'px'
       }
+    },
+    requestOrientationPermission() {
+      DeviceOrientationEvent.requestPermission()
+      .then(response => {
+          if (response == 'granted') {
+            window.addEventListener('deviceorientation', this.handleDeviceParticlePosition)
+          }
+      }).catch(error => {
+        console.log('error:', error)
+        window.alert('error:', error)
+      })
     }
   },
   mounted() {
     const isMobile = window.innerWidth < 769 ? true : false
     if(isMobile) {
-      window.addEventListener('deviceorientation', this.handleDeviceParticlePosition)
+      this.requestOrientationPermission
     } else {
       this.$refs.main.addEventListener('mousemove', this.mouseMoveParticlePosition)
     }
