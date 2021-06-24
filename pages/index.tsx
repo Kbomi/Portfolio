@@ -49,7 +49,7 @@ const Home = () => {
                 <Image src="/career_img.jpeg" alt="김보미 사진" layout="fill" />
               </div>
               <div className={styles.careerText}>
-                <h2>경력</h2>
+                <h2><span>경력</span><span className={styles.pointCircle} /></h2>
                 <ul>
                   <li>
                     <p className={styles.careerDate}>2020.01 ~ 재직중</p>
@@ -79,8 +79,14 @@ const Home = () => {
                     </div>
                   </li>
                 </ul>
+                <a href="/bomi_career.pdf" target="_blank" download className={styles.download}>경력기술서 다운</a>
               </div>
             </div>
+          </div>
+        </section>
+        <section className={`${styles.section} ${styles.todo}`}>
+          <div className="content-width">
+
           </div>
         </section>
         {/* todo list */}
