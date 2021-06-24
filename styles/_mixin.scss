@@ -1,10 +1,17 @@
-// pc: ~ 1025px
+// default: ~ 1921px
+// pc: 1920px ~ 1025px
 // tablet: 1024px ~ 768px
 // mobile: 767px ~ 320px
 
+$pc-breakpoint: 1920px;
 $tablet-breakpoint: 1024px;
 $mobile-breakpoint: 767px;
 
+@mixin pc {
+  @media (max-width: $pc-breakpoint) {
+    @content;
+  }
+}
 
 @mixin tablet {
   @media (max-width: $tablet-breakpoint) {
