@@ -1,0 +1,45 @@
+// default: ~ 1921px
+// pc: 1920px ~ 1025px
+// tablet: 1024px ~ 768px
+// mobile: 767px ~ 320px
+
+$pc-breakpoint: 1920px;
+$tablet-breakpoint: 1024px;
+$mobile-breakpoint: 767px;
+
+@mixin pc {
+  @media (max-width: $pc-breakpoint) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (max-width: $tablet-breakpoint) {
+    @content;
+  }
+}
+
+@mixin mobile {
+  @media (max-width: $tablet-breakpoint) {
+    @content;
+  }
+}
+
+$black: #202020;
+$white: #fff;
+$green: #00913f;
+$dark-green: #014b22;
+$light-gray: #f0f0f0;
+
+@mixin font(
+  $size: 1rem,
+  $weight: normal,
+  $lineHeight: 1.6,
+  $letterSpacing: 0.25px,
+  $color: $black
+) {
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $lineHeight;
+  color: $color;
+}
